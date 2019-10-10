@@ -85,10 +85,5 @@ public class Doctor {
 	
 
 	
-	
-	
-	
-	
-	
 
 }

@@ -7,23 +7,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
-<div class="container pt-3">
-	<div th:replace="fragments/admin-navbar ::navbar"></div>
-	</div>
-	<div class="container pt-3">
-	<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Doctors</li>
-  </ol>
-</nav>
-	<div class="card">
-	<div class="card-header">
-		<h1 class="h5 d-inline">Doctors</h1>
-		<a class="btn btn-primary btn-sm float-right" th:href="@{/admin/doctors/new}" ><i class="fa fa-plus" aria-hidden="true">Add</i></a>
-	</div>
-	<div class="card-body">
-	</div>
-	</div>
+		<a th:href="@{/admin/doctors/new}" class="btn btn-primary">New Doctors</a>
 	<table class="table">
 	  <thead>
 	    <tr>

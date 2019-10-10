@@ -7,55 +7,31 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
-<div class="container pt-3">
-	<div th:replace="fragments/admin-navbar ::navbar"></div>
-	</div>
-	<div class="container pt-3">
-	<nav aria-label="breadcrumb">
- 	 <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Doctors</li>
-   <li class="breadcrumb-item active" aria-current="page">Add Product</li>
-  </ol>
-</nav>
- 
-	<div class="card">
-		<div class="card-header">
-		<h1>New Doctor Profile</h1>
-		</div>
-		<div class="card-body">
-		<div class="row">
-			<div class="col-md-4 mx-auto">
-		<form th:action="@{/admin/doctors}" th:object="${doctors}" method="POST" enctype="multipart/form-data">
-		<div class="form-group">
+
+ <form th:action="@{/admin/doctors/new}" method ="POST" th:object="${doctor}">
+	<div class="form-group">
 		<label>Doctor Name:</label>
 	  	 <input  type="text"  class="form-control" placeholder="Doctor Name" th:field="*{doctorname}"/>
 		</div>
 		<div class="form-group">
 	  	 <label>Specialties</label>
-	  	 <input type="text"  class="form-control" placeholder="" th:field="*{specialties}"/>
+	  	 <input type="text"  class="form-control" placeholder="Specialties" th:field="*{specialties}"/>
 	  	 </div>
 	  	 	<div class="form-group">
 	  	 <label>Qualifications</label>
-	  	 <input type="text"  class="form-control" placeholder="Price" th:field="*{qualification}"/>
+	  	 <input type="text"  class="form-control" placeholder="Price" th:field="*{qualifications}"/>
 	  	 </div>
 	  	<div class="form-group">
 	   <label> Department:</label>
-	   <select th:field="*{department}" class="form-control">
-	      <option th:each="dp:${departments}" th:text="${dp.name}" th:value="${dp.id}"></option>
+	   <select name="departmentId" class="form-control">
+	      <option th:each="dp:${department}" th:text="${dp.name}" th:value="${dp.id}"></option>
 	   </select>
 	   </div>
-	   <div class="form-group">
-	  	 <label> Image:</label>
-	  	 <input type="file"  class="form-control-file" name="doctorImage" />
-	  	 </div>
+	   
 	   <input  class="btn btn-primary btn-block" type="submit" value="Submit">
 	</form>
 			
-			</div>
-		</div>
-	</div>
-	</div>
-	
+			
 	
 </body>
 </html>

@@ -13,7 +13,7 @@ public class DepartmentServiceImp implements DepartmentService{
 
 	
 	@Autowired
-        private DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;
 	
 	@Override
 	public void saveDepartment(Department department) {
@@ -25,6 +25,12 @@ public class DepartmentServiceImp implements DepartmentService{
 	public List<Department> getDepartments() {
 		
 		return departmentRepository.findAll();
+	}
+
+	@Override
+	public Department getDepartments(Integer id) {
+		
+		return departmentRepository.getOne(id);
 	}
 
 }
