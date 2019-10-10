@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,10 @@ public class Doctor {
 	
 	@Column(name="qualifications")
 	private String qualification;
+	
+	@ManyToOne
+	@JoinColumn(name="department_id")
+	private Department department;
 
 	
 	public Doctor() {
@@ -68,6 +74,15 @@ public class Doctor {
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
 	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
 
 	
 	

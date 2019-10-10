@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,9 @@ public class Department {
 	private int id;
 	@Column(name="name")
 	private String name;
+	
+	@OneToMany(mappedBy = "department")
+	private List<Doctor> doctors;
 	
 	
 	public Department(int id, String name) {
@@ -46,6 +50,13 @@ public class Department {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public List<Doctor> getDoctors() {
+		return doctors;
+	}
+	public void setDoctors(List<Doctor> doctors) {
+		this.doctors = doctors;
+	}
+	
 	
 	
 	
