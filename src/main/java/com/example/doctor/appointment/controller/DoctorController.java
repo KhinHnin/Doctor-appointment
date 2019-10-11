@@ -26,6 +26,14 @@ public class DoctorController {
 	@Autowired
 	private DepartmentService departmentService;
 	
+	@GetMapping
+	public String showAdminPage(Model model) {
+		List<Doctor> Doctors=doctorService.getDoctors();
+		model.addAttribute("doctors",Doctors);
+		//model.addAttribute("doctor",new Doctor());
+		return "admin/doctor";
+	}
+	
 	@GetMapping("/adddoctors")
 	public String showDoctorsForm(Model model) {
 		List<Department> departments=departmentService.getDepartments();
@@ -39,9 +47,22 @@ public class DoctorController {
 		Department department=departmentService.getDepartment(id);
 		doctor.setDepartment(department);
 		doctorService.saveDoctor(doctor);
-		return "admin/admin";
+		return "redirect:doctors";
+	}	
+	
+	@GetMapping("/edit")
+	public String editDoctor(@RequestParam("id")Integer doc_id,Model model) {
+		Doctor doc=doctorService.getDoctor(doc_id);
+		List<Department> Departments=departmentService.getDepartments();
+		model.addAttribute("doctor",doc);	
+		model.addAttribute("departments",Departments);
+		return "admin/editdoctor";
 	}
 	
-	
+	@GetMapping("/delete")
+	public String deleteDoctor(@RequestParam("id")Integer doc_id) {
+		doctorService.deleteDoctor(doc_id);
+		return "redirect:";
+	}
 
 }

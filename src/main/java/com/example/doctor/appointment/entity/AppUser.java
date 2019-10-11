@@ -76,6 +76,7 @@ public class AppUser implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities=new ArrayList<>();
@@ -86,6 +87,7 @@ public class AppUser implements UserDetails {
 		return authorities;
 		
 	}
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub

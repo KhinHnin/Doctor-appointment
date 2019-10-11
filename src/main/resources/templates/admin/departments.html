@@ -6,22 +6,29 @@
 
 </head>
 <body>
-<div >
-			      
-			      <h1 >Departments</h1>
-			      
-			      <form th:action="@{/admin/departments}"  method="POST" th:object="${department}">
-			        
-			         <input type="text"  th:field="*{name}" placeholder="Enter Name">
-			         <input type="submit"  value="Create">
-			      
-			      </form>
-			     <ul>
-			       <li th:each="dp:${departments}" th:text="${dp.name}"></li>
-			      
-			      </ul>
-			      
-			</div>
-			
+	<div>
+
+		<h1>Departments</h1>
+
+		<form th:action="@{/admin/departments}" method="POST"
+			th:object="${department}">
+
+			<input type="text" th:field="*{name}" placeholder="Enter Name">
+			<input type="submit" value="Create">
+
+		</form>
+		<table class="table mt-3">
+			<tr>
+				<td>ID</td>
+				<td>Department Name</td>
+			</tr>
+			<tr th:each="department:${departments}">
+				<td th:text="${department.id}"></td>
+				<td th:text="${department.name}"></td>
+			</tr>
+		</table>
+
+	</div>
+
 </body>
 </html>

@@ -10,4 +10,8 @@ public interface DoctorService {
 
 	public List<Doctor> getDoctors();
 
+	public Doctor getDoctor(Integer doctor_id);
+
+	public void deleteDoctor(Integer doc_id);
+
 }

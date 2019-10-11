@@ -25,15 +25,6 @@ public class DepartmentController {
 		 departmentService.saveDepartment(department);
 		 return "redirect:/admin/departments";
 	}
-
-//	@GetMapping
-//	public String showDepartment(Model model) {
-//		List<Department> dp=departmentService.getDepartments();
-//		Model addAttribute = model.addAttribute("categories", dp);
-//		model.addAttribute("department",new Department());
-//		
-//		return "admin/departments";
-//	}
 	
 	@GetMapping
 	public String showDepartment(Model model) {

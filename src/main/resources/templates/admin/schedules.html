@@ -3,11 +3,38 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Schedule form</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 </head>
 <body>
 	<h1 class="h3">Schedules</h1>
-	<a th:href="@{/admin/schedules/new}" class="btn btn-primary">Add Schedule</a>
+	<a th:href="@{/admin/schedules/new}" class="btn btn-primary">Add
+		Schedule</a>
+	<table class="table mt-3">
+		<tr>
+			<th>Schedule_Id</th>
+			<th>Doctor</th>
+			<th>Duty Day</th>
+			<th>Start Time</th>
+			<th>End Time</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="schedule:${schedules}">
+			<td th:text="${schedule.id}"></td>
+			<td th:text="${schedule.doctor.name}"></td>
+			<td th:text="${schedule.day}"></td>
+			<td th:text="${schedule.fromTime}"></td>
+			<td th:text="${schedule.toTime}"></td>
+			<td><a
+				th:href="@{/admin/schedules/editSchedule(id=${schedule.id})}">Edit</a>
+				<a th:href="@{/admin/schedules/deleteSchedule(id=${schedule.id})}">Delete</a></td>
+		</tr>
+	</table>
 </body>
 </html>

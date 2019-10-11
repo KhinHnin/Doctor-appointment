@@ -1,5 +1,7 @@
 package com.example.doctor.appointment.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,33 +9,44 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "doctors")
 public class Doctor {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "name")
 	private String name;
-	@Column(name= "qualification")
+	@Column(name = "qualification")
 	private String qualification;
-	@Column(name= "image")
+	@Column(name = "image")
 	private String image;
+
+	@OneToMany(mappedBy = "doctor")
+	private List<Schedule> schedules;
 	
 	@ManyToOne
-	@JoinColumn(name="department_id")
-	
+	@JoinColumn(name = "department_id")
 	private Department department;
+
+	public List<Schedule> getSchedules() {
+		return schedules;
+	}
+
+	public void setSchedules(List<Schedule> schedules) {
+		this.schedules = schedules;
+	}
 
 	public Doctor(int id, String name, String qualification, String image, Department department) {
 		super();
 		this.id = id;
 		this.name = name;
-	
+
 		this.qualification = qualification;
 		this.image = image;
 		this.department = department;
@@ -42,7 +55,7 @@ public class Doctor {
 	public Doctor(String name, String speciality, String qualification, String image, Department department) {
 		super();
 		this.name = name;
-		
+
 		this.qualification = qualification;
 		this.image = image;
 		this.department = department;
@@ -68,8 +81,6 @@ public class Doctor {
 		this.name = name;
 	}
 
-	
-
 	public String getQualification() {
 		return qualification;
 	}
@@ -93,8 +104,5 @@ public class Doctor {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
-	
-	
 
 }

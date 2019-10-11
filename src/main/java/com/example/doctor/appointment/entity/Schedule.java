@@ -1,0 +1,86 @@
+package com.example.doctor.appointment.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "schedules")
+public class Schedule {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+
+	@ManyToOne
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctor;
+
+	@Column(name = "day")
+	private String day;
+
+	@Column(name = "start_Time")
+	private String fromTime;
+
+	@Column(name = "end_Time")
+	private String toTime;
+
+	public Schedule() {
+
+	}
+
+	public Schedule(int id, Doctor doctor, String day, String fromTime, String toTime) {
+		super();
+		this.id = id;
+		this.doctor = doctor;
+		this.day = day;
+		this.fromTime = fromTime;
+		this.toTime = toTime;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getFromTime() {
+		return fromTime;
+	}
+
+	public void setFromTime(String fromTime) {
+		this.fromTime = fromTime;
+	}
+
+	public String getToTime() {
+		return toTime;
+	}
+
+	public void setToTime(String toTime) {
+		this.toTime = toTime;
+	}
+
+}
