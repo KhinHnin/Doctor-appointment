@@ -38,6 +38,7 @@ public class AppUserServiceImp implements AppUserService {
 		
 		userRepository.save(user);
 	}
+	
 	@Override
 	@Transactional
 	public AppUser loadUserByUsername(String name) {

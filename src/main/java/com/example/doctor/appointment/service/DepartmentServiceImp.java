@@ -28,9 +28,10 @@ public class DepartmentServiceImp implements DepartmentService{
 	}
 
 	@Override
-	public Department getDepartments(Integer id) {
+	public Department getDepartment(Integer id) {
 		
 		return departmentRepository.getOne(id);
 	}
 
+	
 }

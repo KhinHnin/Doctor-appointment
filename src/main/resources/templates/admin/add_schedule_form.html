@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="col-md-8 col-lg-9">
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+			
+			
+		<h1 class="h3">Add Schedule Form</h1>
+		<form th:action="@{/admin/schedules}" th:object="${schedule}" method="post">
+		<div class="form-group">
+		<label>Doctor Name:</label>
+		<select class="form-control" name="doctor_Id">
+				<option th:each="doctor:${doctors}" th:text="${doctor.name}" th:value="${doctor.id}"></option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label>Days:</label>
+			<select class="form-control" name="day_Id">
+				<option th:each="day:${days}" th:text="${day.day}" th:value="${day.id}"></option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label>From:</label>
+			<input type="time" placeholder="Time" />
+			<label>To:</label>
+			<input type="time" placeholder="Time" />
+		</div>
+		
+		<input type="submit" value="Submit" class="btn btn-primary" />
+	</form>
+	
+	
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

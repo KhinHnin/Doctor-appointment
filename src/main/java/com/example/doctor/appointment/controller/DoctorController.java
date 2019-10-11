@@ -1,6 +1,7 @@
 package com.example.doctor.appointment.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,56 +16,32 @@ import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.service.DepartmentService;
 import com.example.doctor.appointment.service.DoctorService;
 
-
 @Controller
 @RequestMapping("/admin/doctors")
 public class DoctorController {
 	
 	@Autowired
-	private DepartmentService departService;
-	
-	@Autowired
 	private DoctorService doctorService;
 	
-	@GetMapping
-	public String showDoctorList(Model model) {
-		List<Doctor> doctors = doctorService.getDoctor();
-		model.addAttribute("doctors", doctors);
-		return "admin/doctor-list";
+	@Autowired
+	private DepartmentService departmentService;
+	
+	@GetMapping("/adddoctors")
+	public String showDoctorsForm(Model model) {
+		List<Department> departments=departmentService.getDepartments();
+		model.addAttribute("doctor",new Doctor());
+		model.addAttribute("dp",departments);
+		return"admin/doctor-form";
 	}
 	
 	@PostMapping
-	public String addDoctors(@RequestParam("departmentId")Integer id,@ModelAttribute("doctor")Doctor doctor) {
-		Department depart = departService.getDepartments(id);
-		doctor.setDepartment(depart);
+	public String saveDoctor(@RequestParam("departmentId")Integer id,@ModelAttribute("doctor")Doctor doctor) {
+		Department department=departmentService.getDepartment(id);
+		doctor.setDepartment(department);
 		doctorService.saveDoctor(doctor);
-		return "redirect:/admin/doctors";
-		
+		return "admin/admin";
 	}
 	
-	@GetMapping("/new")
-	public String newDoctor(Model model) {
-		List<Department> departments = departService.getDepartments();
-		model.addAttribute("department",departments);
-		model.addAttribute("doctors",new Doctor());
-		return "admin/new-doctors";
-	}
-	
-	@GetMapping("/edit")
-	public String ShowdoctorForm(@RequestParam("id")Long id,Model model) {
-		
-		Doctor doctor = doctorService.getDoctor(id);
-		List<Department> departments = departService.getDepartments();
-		model.addAttribute("doctors",doctor);
-		model.addAttribute("department",departments);
-		return "admin/edit-doctors";
-	}
-	
-	@GetMapping("/delete")
-	   public  String  deleteDoctor(@RequestParam("id")Long id) {
-		doctorService.deleteDoctor(id);
-		return "redirect:";
-	   }
 	
 
 }

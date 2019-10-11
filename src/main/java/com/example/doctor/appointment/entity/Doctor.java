@@ -15,32 +15,41 @@ public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="doctorname")
-	private String doctorname;
-	
-	@Column(name="specialties")
-	private String specialites;
-	
-	@Column(name="qualifications")
+	@Column(name = "name")
+	private String name;
+	@Column(name= "qualification")
 	private String qualification;
+	@Column(name= "image")
+	private String image;
 	
 	@ManyToOne
 	@JoinColumn(name="department_id")
+	
 	private Department department;
 
+	public Doctor(int id, String name, String qualification, String image, Department department) {
+		super();
+		this.id = id;
+		this.name = name;
 	
-	public Doctor() {
-		
+		this.qualification = qualification;
+		this.image = image;
+		this.department = department;
 	}
 
-	public Doctor(String doctorname, String specialites, String qualification) {
+	public Doctor(String name, String speciality, String qualification, String image, Department department) {
+		super();
+		this.name = name;
 		
-		this.doctorname = doctorname;
-		this.specialites = specialites;
 		this.qualification = qualification;
+		this.image = image;
+		this.department = department;
+	}
+
+	public Doctor() {
+		super();
 	}
 
 	public int getId() {
@@ -51,21 +60,15 @@ public class Doctor {
 		this.id = id;
 	}
 
-	public String getDoctorname() {
-		return doctorname;
+	public String getName() {
+		return name;
 	}
 
-	public void setDoctorname(String doctorname) {
-		this.doctorname = doctorname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getSpecialites() {
-		return specialites;
-	}
-
-	public void setSpecialites(String specialites) {
-		this.specialites = specialites;
-	}
+	
 
 	public String getQualification() {
 		return qualification;
@@ -73,6 +76,14 @@ public class Doctor {
 
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public Department getDepartment() {
@@ -83,7 +94,7 @@ public class Doctor {
 		this.department = department;
 	}
 	
-
+	
 	
 
 }

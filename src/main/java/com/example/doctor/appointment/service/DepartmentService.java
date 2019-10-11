@@ -8,5 +8,5 @@ public interface DepartmentService {
 
 	public void saveDepartment(Department department);
 	public List<Department> getDepartments();
-	public Department getDepartments(Integer id);
+	public Department getDepartment(Integer id);
 }
