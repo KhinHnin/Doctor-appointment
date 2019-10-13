@@ -33,7 +33,7 @@ public class ScheduleController {
 		return "admin/schedules";
 	}
 	
-	@GetMapping("/admin/schedules/new")
+	@GetMapping("/new")
 	public String addScheduleForm(Model model) {
 		List<Doctor> doctors=doctorService.getDoctors();
 		model.addAttribute("schedule",new Schedule() );

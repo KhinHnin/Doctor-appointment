@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+		<div class="row mt-5">
+			<div class="col-md-4 col-lg-3">
+				  <div th:replace="fragment/sidebar :: contact-sidebar"></div>
+		
+			</div>
+			<div class="col-md-8 col-lg-9">
+<h1 class="h3">Contacts</h1>
+	<table class="table mt-3">
+		<tr>
+		    <th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Subject</th>
+			<th>Message</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="con:${contacts}">
+			<td th:text="${con.id}"></td>
+			<td th:text="${con.name}"></td>
+			<td th:text="${con.email}"></td>
+			<td th:text="${con.subject}"></td>
+			<td th:text="${con.message}"></td>
+			<td> <a th:href="@{/admin/contactList/delete(id=${con.id})}">Delete</a></td>
+			</tr>
+			</table>
+			</div>
+			</div>
+			</div>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>

@@ -11,13 +11,16 @@
   					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
   					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
   					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
+  					<a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
 		</div>
 		<div class="list-group" th:fragment="departments-sidebar">
 					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
   					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action active">Departments</a>
   					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
-  					<a th:href="@{/admin/Appointments}" class="list-group-item list-group-item-action">Appointments</a>
-  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
+  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
+		            <a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
+  					<a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
+		
 		</div>
 		<div class="list-group" th:fragment="doctors-sidebar">
 					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
@@ -25,13 +28,15 @@
   					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action active">Doctors</a>
   					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
   					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
-		</div>
+	                <a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
+	</div>
 		<div class="list-group" th:fragment="appointments-sidebar">
 					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
   					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
   					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
   					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action active">Appointments</a>
   					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
+		            <a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
 		</div>
 		<div class="list-group" th:fragment="schedules-sidebar">
 					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
@@ -39,6 +44,15 @@
   					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
   					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
   					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action active">Schedules</a>
+		            <a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
+		</div>
+		<div class="list-group" th:fragment="contact-sidebar">
+					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
+  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
+  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
+  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
+  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
+  					<a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action active">Contacts</a>
 		</div>
 </body>
 </html>
