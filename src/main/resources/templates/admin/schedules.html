@@ -13,9 +13,10 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1 class="h3">Schedules</h1>
-	<a th:href="@{/admin/schedules/new}" class="btn btn-primary">Add
-		Schedule</a>
+	<div th:replace="fragment/sidebar::app-sidebar"></div>
+	 <div class="container" style="width:100%;margin-left:200px;">
+	<h3 style="padding:20px;background:#fff;color:#717171;"><i class="far fa-calendar-alt" style="width:25px;"></i>Schedule</h3>
+	<a th:href="@{/admin/schedules/new}" class="btn btn-secondary">Add	Schedule</a>
 	<table class="table mt-3">
 		<tr>
 			<th>Schedule_Id</th>

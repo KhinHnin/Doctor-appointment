@@ -1,58 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<!--  <link rel="stylesheet" type="text/css" th:href="@{/css/mystyle.css}"/> -->
+<style type="text/css"> 
+	*{
+		margin:0;
+		padding:0;
+		box-sizing:border-box;
+		list-style:none;
+		text-decoration:none;
+	 	font-family:sans-serif; 
+	 	padding-right:10%;
+	} 
+</style>
 </head>
-<body>
-		<div class="list-group" th:fragment="app-sidebar">
-					<a th:href="@{/admin}" class="list-group-item list-group-item-action active"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
-  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
-  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
-  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
-  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
-  					<a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
-		</div>
-		<div class="list-group" th:fragment="departments-sidebar">
-					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
-  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action active">Departments</a>
-  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
-  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
-		            <a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
-  					<a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
-		
-		</div>
-		<div class="list-group" th:fragment="doctors-sidebar">
-					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
-  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
-  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action active">Doctors</a>
-  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
-  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
-	                <a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
+<body> 	
+	<div th:fragment="app-sidebar">
+ 	<div class="wrapper" style="display:flex;position:relative;" >
+	<div class="sidebar" style="position:fixed;width:200px;height:100%;background:#667db6;padding:30px 0;   ">
+		<h2 style="color:#fff;text-transform:uppercase;text-align:center;margin-bottom:30px;"><i class="fa fa-user-circle" aria-hidden="true"></i>Admin</h2>
+		<ul style="list-style:none">
+			<li style="padding:15px;border-bottom:1px solid rgba(0,0,0,0.05);border-top:1px solid rgba(225,225,225,0.05);hover:#594f8d;"><a style="color:#bdb8d7;display:block;hover:background:#594f8d;" th:href="@{/admin}"><i class="fas fa-tachometer-alt" style="width:25px;"></i>Dashboard</a></li>
+			<li style="padding:15px;border-bottom:1px solid rgba(0,0,0,0.05);border-top:1px solid rgba(225,225,225,0.05);"><a  style="color:#bdb8d7;display:block;" th:href="@{/admin/departments}"><i class="fa fa-building" aria-hidden="true"  style="width:25px;"></i>Departments</a></li>
+			<li style="padding:15px;border-bottom:1px solid rgba(0,0,0,0.05);border-top:1px solid rgba(225,225,225,0.05);"><a  style="color:#bdb8d7;display:block;"  th:href="@{/admin/doctors}"><i class="fa fa-user-md" aria-hidden="true"  style="width:25px;"></i>Doctors</a></li>
+			<li style="padding:15px;border-bottom:1px solid rgba(0,0,0,0.05);border-top:1px solid rgba(225,225,225,0.05);"><a  style="color:#bdb8d7;display:block;"  th:href="@{/admin/appointments}" ><i class="fa fa-list-alt" aria-hidden="true"  style="width:25px;"></i>Appointments</a></li>
+			<li style="padding:15px;border-bottom:1px solid rgba(0,0,0,0.05);border-top:1px solid rgba(225,225,225,0.05);"><a  style="color:#bdb8d7;display:block;" th:href="@{/admin/schedules}"><i class="far fa-calendar-alt" style="width:25px;"></i>Schedules</a></li>
+			<li style="padding:15px;border-bottom:1px solid rgba(0,0,0,0.05);border-top:1px solid rgba(225,225,225,0.05);"><a  style="color:#bdb8d7;display:block;" th:href="@{/admin/contactList}"><i class="far fa-address-book" style="width:25px"></i>Contact List</a></li>
+		</ul>
+		<div class="footer" style="position:absolute;bottom:45px;left:50%;transform:translateX(-50%);display:flex;">
+		<form th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()">
+				<button   class="btn btn-outline-light" type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
+			</form>
 	</div>
-		<div class="list-group" th:fragment="appointments-sidebar">
-					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
-  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
-  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
-  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action active">Appointments</a>
-  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
-		            <a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
-		</div>
-		<div class="list-group" th:fragment="schedules-sidebar">
-					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
-  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
-  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
-  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
-  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action active">Schedules</a>
-		            <a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action">Contacts</a>
-		</div>
-		<div class="list-group" th:fragment="contact-sidebar">
-					<a th:href="@{/admin}" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt"></i>DashBoard</a>
-  					<a th:href="@{/admin/departments}" class="list-group-item list-group-item-action">Departments</a>
-  					<a th:href="@{/admin/doctors}" class="list-group-item list-group-item-action">Doctors</a>
-  					<a th:href="@{/admin/appointments}" class="list-group-item list-group-item-action">Appointments</a>
-  					<a th:href="@{/admin/schedules}" class="list-group-item list-group-item-action">Schedules</a>
-  					<a th:href="@{/admin/contactList}" class="list-group-item list-group-item-action active">Contacts</a>
-		</div>
+	</div>
+	
+	</div>
+	</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-</html>
+</html>	
+
+	
+	

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -49,8 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		     .loginPage("/showLogin")
 		     .loginProcessingUrl("/processLogin")
 		     .and()
-		     .exceptionHandling().accessDeniedPage("/403");
-		
+		     .exceptionHandling().accessDeniedPage("/403");		
 		
 	}
+	 
 }

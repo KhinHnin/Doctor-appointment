@@ -3,10 +3,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Doctor Page</h1>
-	<a th:href="@{/admin/doctors/adddoctors}" class="btn btn-primary">Add Doctor</a>
+<div th:replace="fragment/sidebar::app-sidebar"></div>
+ <div class="container" style="width:100%;margin-left:200px;">
+	<h3 style="padding:20px;background:#fff;color:#717171;"><i class="fa fa-user-md" aria-hidden="true" style="width:25px;"></i>Doctor</h3>
+	<a th:href="@{/admin/doctors/adddoctors}"class="btn btn-secondary">Add Doctor</a>
 	<table class="table mt-3">
 		<tr>
 			<th>Id</th>
@@ -23,5 +33,7 @@
 			<td><a th:href="@{/admin/doctors/edit(id=${doctor.id})}">Edit</a> <a th:href="@{/admin/doctors/delete(id=${doctor.id})}">Delete</a></td>
 		</tr>
 	</table>
+</div>
+</div>	
 </body>
 </html>

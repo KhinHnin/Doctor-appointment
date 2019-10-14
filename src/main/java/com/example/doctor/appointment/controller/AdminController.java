@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.doctor.appointment.entity.Contact;
+import com.example.doctor.appointment.repository.DepartmentRepository;
+import com.example.doctor.appointment.repository.DoctorRepository;
 import com.example.doctor.appointment.service.ContactService;
 
 @Controller
@@ -17,10 +19,21 @@ import com.example.doctor.appointment.service.ContactService;
 public class AdminController {
 
 	@Autowired
-	private ContactService contactService;
+	private DepartmentRepository departmentRepository;
 	
+	@Autowired
+	private DoctorRepository doctorRepository;
+	
+	@Autowired
+	private ContactService contactService;
+
 	@GetMapping
-	public String showAdminPage() {
+	public String showAdmin(Model model) {
+		long departCount=departmentRepository.count();
+		long doctorCount=doctorRepository.count();
+		
+		model.addAttribute("departCount",departCount);
+		model.addAttribute("doctorCount",doctorCount);
 		return "admin/admin";
 	}
 	@GetMapping("/contactList")
