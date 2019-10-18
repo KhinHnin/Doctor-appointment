@@ -30,6 +30,8 @@ public class Doctor {
 	@OneToMany(mappedBy = "doctor")
 	private List<Schedule> schedules;
 	
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "department_id")
 	private Department department;

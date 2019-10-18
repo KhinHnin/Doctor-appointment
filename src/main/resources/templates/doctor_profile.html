@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container" th:each="d:${doctor}">
+		<div class="row mt-5 mx-auto" >
+			<div class="col-md-4 col-lg-3" >
+				  
+		    <img class="card-img-top " th:src="${d.image}" alt="">
+			</div>
+			<div class="col-md-8 col-lg-9" >
+			      <h1 th:text="${d.name}"></h1>
+			      <p class="lead" th:text="'Qualification- '+ ${d.qualification}"></p>
+			      <p  th:text="'Speciality- '+ ${d.department.name}"></p>
+			      <div class="dropdown">
+			      
+			      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Schedule</button>
+			      <div class="dropdown-menu">
+			      <table class="table mt-3 dropdown-item">
+			      <tr>
+			        <th>Day</th>
+			        <th>Time</th>
+			        <th>Date</th>
+                   </tr>
+			      <tr th:each="sh:${schedules}">
+			      <td th:if="${sh.doctor.id == d.id}" th:text="${sh.day}"></td>
+			      <td th:if="${sh.doctor.id == d.id}" th:text="${sh.fromTime}+'-'+${sh.toTime}"></td>
+			      <td th:if="${sh.doctor.id == d.id}" th:text="${sh.date}"></td>
+			      </tr>
+			      </table>
+			      </div>
+			      </div>
+			      </div>
+			      
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>

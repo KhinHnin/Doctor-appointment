@@ -24,6 +24,7 @@
 			<th>Duty Day</th>
 			<th>Start Time</th>
 			<th>End Time</th>
+			<th>Date</th>
 			<th>Action</th>
 		</tr>
 		<tr th:each="schedule:${schedules}">
@@ -32,6 +33,7 @@
 			<td th:text="${schedule.day}"></td>
 			<td th:text="${schedule.fromTime}"></td>
 			<td th:text="${schedule.toTime}"></td>
+			<td th:text="${schedule.date}"></td>
 			<td><a
 				th:href="@{/admin/schedules/editSchedule(id=${schedule.id})}">Edit</a>
 				<a th:href="@{/admin/schedules/deleteSchedule(id=${schedule.id})}">Delete</a></td>
