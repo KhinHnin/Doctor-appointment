@@ -1,3 +1,6 @@
+
+
+
 package com.example.doctor.appointment.entity;
 
 import javax.persistence.Column;
