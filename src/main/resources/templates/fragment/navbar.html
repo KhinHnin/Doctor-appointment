@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Online Doctor Appointment</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="col-lg-12">
+		<nav
+			class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar"
+			th:fragment="app-navbar">
+			<a class="navbar-brand" th:href="@{/}"> <img height="100"
+				width="120"
+				src="https://lh3.googleusercontent.com/ISRIbRw1lVGIqGhM-DCu0aCDnRiYc8XMU0mAb0P0kjGRmyLbW_Vj19owk0kVaPBafIKYeTEsT1104RK9sjpKkxsVQRRO92fH3RgbjmDJSMqop-HQdRLFN7aENRHNCxn5D0bApX6ap4jSBYme29GiD_vbcSr8xHd2G-Zk2xg2eOMXliPAqftdBZ3OGT8iPq0pRg1Tb_f3EGSgg3rBv6quUIu97tuwMBMYsjELVP-_v2tz4KHlx2OYNyYYml1s4oE4mqCzlabzxU3rG5QzD9S-AZ-ROzEiegYapShnsPvLYPE1qoq0m4JGIRY4el00Myz5R_tM4zBWcfBfymFTKJ6uR78v6lDAsdDO6y9LMLPOoebmEl5dS3mUqbptYZwnE71RxGCC1RaKXH17qp4VJZFg4TQlyhbeT-u1SX2ltTYXQLbjXEpr0Gyy2yatHJDLuegEO8OMgYk4ZwWpaLI7VPOOXhaO_PNij4lF3tSbyWXKBf2Gb174diyqIk9HIrSGBEahq5Ake-HbdJJs4E_crUfsQFZ7H6MeHInmvIRAZfiUMaChoQ9SvhPk7G-I4s9h8L9Bb3C-sEpjYvaiWw7JRyKwfqb93qmgFrCHFepRVDq8k7KcoTrsh0kN3xYnQQzYglB8VtH9bEFc7d3LB5w8IWhvYwZ77dG-6NoEDy4PT-fc5WOF9gtBnmp3=w225-h224-no" />
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div
+				class="collapse navbar-collapse main-menu-item justify-content-center"
+				id="navbarSupportedContent">
+				<ul class="navbar-nav align-items-center" >
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+					<li class="nav-item"><a class="nav-link">Find Doctors</a></li>
+					<li class="nav-item"><a class="nav-link">Appointments</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contactus}">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+
+
+	<!-- Bootstrap Javascript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
