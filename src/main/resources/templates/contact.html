@@ -3,55 +3,156 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-    <link rel="stylesheet"
+<title>Online Doctor Appointment</title>
+
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Carme&display=swap" rel="stylesheet">
+<style type="text/css">
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: 'Carme', sans-serif;
+}
+
+.bg {
+	/* Full height */
+	height: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 100, 130, 1)),
+		url("https://scontent.fmdl2-1.fna.fbcdn.net/v/t1.0-9/74209905_940417119672633_2668622687500238848_o.jpg?_nc_cat=106&_nc_oc=AQlRtyf_loDn8RDgDH9lNQtNtffwWjc9H9Su79jYrSb_seg-woHGtGgmLDoW_Rx1OWM&_nc_ht=scontent.fmdl2-1.fna&oh=405e52d6fa2002c9ef9b057876db0ce8&oe=5E273F95");
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width:250px;
+  height:300px;
+  padding:15px;
+  margin:10px;
+  border-radius:5px;
+  transition: 0.3s;
+  color:#004d99;
+  text-align: center;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card>a{ color:#004d99;}
+.card>a:hover{ color:#004d99;
+text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+}
+.mac {
+  display: block;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  color:#004d99;
+  background-color:#D6EAF8;
+  box-shadow: 
+    inset 0 2px 0 rgba(0,0,0,.2), 
+    0 0 4px rgba(0,0,0,0.1);
+}
+
+.mac:focus { 
+  outline: none;
+  box-shadow: 
+    inset 0 2px 0 rgba(0,0,0,.2), 
+    0 0 4px rgba(0,0,0,0.1),
+    0 0 5px 1px #004d99;
+}
+
+.myButton {
+	box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#004d99;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:6px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #415989 5%, #2e466e 70%);
+	background-color:#004d99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+</style>
+
 </head>
 <body>
+	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
 
-<div class="container mt-3" >
-                      <h1 class="h3 mb-5" style="text-align:center" >Contact Us</h1>
-                <div class="row">
-                <div class="col-lg-3" style="background:#f8f7fc">
-               
-                  <h4 style="text-align:center" class="mb-3"><i class="fas fa-map-signs pr-2" style="color:#07f2ac"></i>Address</h4>
-                                        <pre style="color:#07f2ac">   Corner of 30th x 57th Street,
-    Chan Aye Tharzan Township</pre>
-                </div>
-                <div class="col-lg-1" >
-               
-                
-                </div>
-                <div class="col-lg-3" style="background:#f8f7fc">
-            
-                <h4 style="text-align:center" > <i class="fas fa-phone pr-2" style="color:#07f2ac"></i>Phone Number</h4>
-                    <p style="text-align:center;color:#07f2ac">09 44447 7159</p>
-                </div>
-                 <div class="col-lg-1" >
-               
-                
-                </div>
-                <div class="col-lg-3" style="background:#f8f7fc" >
-                
-                <h4 style="text-align:center"><i class="fas fa-envelope-open-text pr-2" style="color:#07f2ac"></i>Email</h4>
-                <p style="text-align:center;color:#07f2ac">gmh.y2017@gmail.com</p>
-                
-                </div>
-                 <div class="col-lg-1" >
-                </div>
-              
-                </div>
-			     <div class="row mt-5">
-			     <div class="col-md-6">
-			        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4400.013997994417!2d96.11933650374202!3d21.
+	<div class="bg"></div>
+
+	<div class="container my-5">
+
+
+		<div class="row justify-content-md-center">
+			<div class="card ">
+				<a th:href="@{https://www.google.com/maps/place/Grand+Mandalay+Hospital/@21.974441,96.12156,16z/data=!4m5!3m4!1s0x0:0x84d1546de1ac3431!8m2!3d21.9744409!4d96.1215597?hl=en}">
+				<i class="fas fa-map-marked-alt display-4 pb-3 "></i></a>
+				<h4>Address</h4>
+				<div class="card-body">
+					<p class="card-text">Corner of 30th x 57th Street,<br>
+   				 Chan Aye Tharzan Township,
+   				 Mandalay</p>
+				</div>
+			</div>
+			<div class="card ">
+				<a th:href="@{/contactus}">
+				<i class="fas fa-phone display-4 pb-3"></i></a>
+				<h4>Phone Number</h4>
+				<div class="card-body">
+					<p class="card-text">09-40 30 400 41,<br>09-40 30 400 42,<br>
+					09-77777 80 41,<br>09-97777 80 41</p>
+				</div>
+			</div>
+			<div class="card ">
+				<a th:href="@{https://www.gmail.com}">
+				<i class="fas fa-envelope-open-text display-4 pb-3"></i></a>
+				<h4>Email</h4>
+				<div class="card-body">
+					<p class="card-text">gmh.y2017@gmail.com</p>
+				</div>
+			</div>
+			<div class="card ">
+				<a th:href="@{https://web.facebook.com/grandmandalay/}" >
+				<i class="fab fa-facebook  display-4 pb-3"></i></a>
+				<h4>Facebook</h4>
+				<div class="card-body">
+					<p class="card-text">www.facebook.com/<br>grandmandalay</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="row my-5">
+			<div class="col-md-6">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4400.013997994417!2d96.11933650374202!3d21.
 			         974651799349143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb6db1ef621837%3A0x84d1546de1ac3431!2s
 			         Grand%20Mandalay%20Hospital!5e0!3m2!1sen!2smm!4v1570955027115!5m2!1sen!2smm"
+<<<<<<< HEAD
 			           width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 			     
 			     </div>
@@ -80,22 +181,61 @@
 			         <input type="submit" value="Submit" style="background:#07f2ac" class="btn btn-block">
 			      </form>
 			      
+=======
+					width="600" height="450" frameborder="0" style="border: 0;"
+					allowfullscreen=""></iframe>
+
+			</div>
+			<div class="col-md-6" style="background: #f8f7fc">
+
+				<h2 class="h1 text-center my-2" style="color: #004d99">Get in Touch</h2>
+				<form th:action="@{/}" method="POST" th:object="${contact}">
+					<div class="form-group">
+
+						<input type="text" class="form-control mac" th:field="*{name}"
+							placeholder="Your name">
+
+					</div>
+					<div class="form-group">
+
+						<input type="email" class="form-control mac" th:field="*{email}"
+							placeholder="Your email">
+					</div>
+
+
+					<div class="form-group">
+
+						<input type="text" class="form-control mac" th:field="*{subject}"
+							placeholder="Subject">
+					</div>
+					<div class="form-group ">
+						<textarea rows="5" cols="58" class="form-control mac"  th:field="*{message}"
+							placeholder="Message"></textarea>
+					</div>
+					<div style="text-align:center">
+					<input type="submit" value="Submit" class="form-control myButton">
+					</div>
+				</form>
+
+>>>>>>> f0a66649b1308ebf6adbf8fd0521d37b1c33e3eb
 			</div>
 		</div>
-		</div>
+	</div>
 
+	<!-- Footer -->
+	<div th:replace="fragment/footer :: app-footer"></div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
 
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 </body>
 </html>
