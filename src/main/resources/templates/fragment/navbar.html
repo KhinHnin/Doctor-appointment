@@ -20,6 +20,36 @@
 <script th:src="@{/js/nav.js}"></script>
 </head>
  <body>
+ <body>
+<nav class="navbar navbar-default navbar-fixed-top"  th:fragment="app-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" th:href="@{/}"><img height="100" width="120" src="https://lh3.googleusercontent.com/ZHNWxUXIOx60YDAITXniNkCc_0b6PtFrkAsZWUq23NxFApCvpNIBOHOvuPPp8nlAIXq77n6vQFuOb91uKaF0z466yjw2P9fscR5BUuSHW0Oh-HzUyfstIFsgPN7yRYQrwWg1PCySCU2vyFWcZ9aggGTWPteFa4eesN-ffPm65zFxbGtTpxc8OkwSFV3GPtKGHHO8xbnUkn9_obHjNiuWBGLuvvy2Teka71A4Ybl3hWhCMGbiZlaomvmyv9kxcCdYYq4nZcJhwwg5zYdF9-XEse6nLifbmW4h9BnL7BZK7oHE8wwp_skxTaH5XdooVuO1D8EgnvgeMmNVe1azq1Ayu1-E7VeJF1SP4KHEvTki_Jy5rGqBi251XOU7yd-auAIma5tsIhxt1IW8TQpU0RSpAsdmPSHuPyZoyxg8HqHEET84tdqX9n0-1kj6L2vbk84d1qx23dkq7BvPakmxdNOHMo-36WK1LvjKWGwu7ZxAw_TRs60VB7x9kmzYwCfiVNnm3GnvQn0GXS3PlsG3mag6UjytnJwYU0wjfLMN3F2GPD02tUb_PxaGSDldWh30N0RFyGwJp1iVKbh8_3qnpDA5jNSSsZUGo393wTLWZibnean_dtAeO2p1ZMjZ7tsXXmBPrF8SmnFdPnkRh0Vsrw7kX16M-kNKY66hy0gocjyrg1E5X4O8jfd7=w225-h224-no" /></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+				<li><a th:href="@{/}">Home</a></li>
+				<li><a >Find Doctors</a></li>
+				<li><a >Appointments</a></li>
+				<li><a th:href="@{/contactus}">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="image">
+   <h1 class="heading">Main Heading</h1>
+   <p><button class="btn btn-large">Big Button</button></p>
+</div>
+
+
      <div class="col-lg-12">
 		<nav
 			class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar"
