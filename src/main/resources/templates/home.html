@@ -25,8 +25,6 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" th:href="@{/css/nav.css}" />
-<script th:src="@{/js/nav.js}"></script>
 
 <style type="text/css">
 
@@ -56,10 +54,9 @@
 	min-height: 200px;
 }
 </style>
-<link rel="stylesheet" th:href="@{/css/img-slide.css}" />
-<script th:src="@{/js/img-slide.js}"></script>
-</head>
 
+</head>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
 <body>
 
 	<!-- Navigation -->
@@ -74,11 +71,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<!-- service-slide -->
 
 
 		<!-- service-slide -->
-		<div class="row">
+		<div class="row mx-4">
 			<!-- single department -->
 			<div class="col-lg-2 text-center col-sm-7 service">
 				<div class="card ">
@@ -106,9 +104,6 @@
 					<h4>Medical Lab</h4>
 				</div>
 			</div>
-
-
-<<<<<<< HEAD
 			<!-- single department -->
 			<div class="col-lg-2 text-center col-sm-7">
 				<div class="card">
@@ -128,7 +123,7 @@
 				</div>
 			</div>
 			<!-- single department -->
-			<div class="col-lg-2 text-center col-sm-6">
+			<div class="col-lg-2 text-center col-sm-7">
 				<div class="card">
 					<div class="content">
 						<i class="far fa-hospital my-4" style="font-size: 50px"></i>
@@ -136,40 +131,28 @@
 					<h4>Room Service</h4>
 				</div>
 			</div>
-=======
-			<a th:href="@{/contactus}">
-				
-			</a>
-           <a th:href="@{/findDoctor}">
-				
-			</a>
-           
->>>>>>> 7371fbcf02487b87be0d98333ac27442a0ff4bf4
+		
 		</div>
-
-	</div>
-
 	<!-- service-end -->
 
 	<!-- department -->
 	<section class="container">
-		<div class="row ">
+		<div class="row py-5">
 			<div class="mx-auto">
 				<h1>Our Department</h1>
 			</div>
 		</div>
 	</section>
-	<div class=" col-12 col-sm-6 col-md-4 col-lg-3" th:each="department:${departments}">
+	<div class="row mx-4">
+	<div class="col-lg-3" th:each="department:${departments}">
 		<div class="card">
-			<img class="card-img-top img-fluid " th:src="${department.image}"
-				alt="">
+			<img class="card-img-top img-fluid " th:src="${department.image}" alt="">
 			<div class="card-body">
 				<h4 class="h4" th:text="${department.name}"></h4>
 			</div>
 		</div>
 	</div>
-
-
+	</div>
 	<!-- department-end -->
 
 	<!-- Footer -->

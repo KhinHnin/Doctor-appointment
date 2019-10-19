@@ -15,4 +15,5 @@ public class DoctorAppointmentApplication {
 		// TODO Auto-generated method stub
 		return builder.sources(DoctorAppointmentApplication.class);
 	}
+	
 }
