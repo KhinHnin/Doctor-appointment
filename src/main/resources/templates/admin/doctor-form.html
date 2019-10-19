@@ -11,35 +11,60 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/sidebar.css/}" type="text/css">
+<style type="text/css">
+.mac {
+  display: block;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  color:#004d99;
+  background-color:white;
+  box-shadow: 
+    inset 0 2px 0 rgba(0,0,0,.2), 
+    0 0 4px rgba(0,0,0,0.1); 
+}
+
+.mac:focus { 
+  outline: none;
+   box-shadow: 
+    inset 0 2px 0 rgba(0,0,0,.2), 
+    0 0 4px rgba(0,0,0,0.1),
+     0 0 5px 1px #004d99; 
+}
+</style>
+
 </head>
 <body>
+	<div th:replace="fragment/sidebar::app-sidebar"></div>
+	<div class="container" style="width:100%;margin-left:200px;">
+		<h3 style="padding:20px;" class="h3 text-gray-900 mb-4"><i class="fas fa-user-md mr-3" aria-hidden="true" style="width:25px;"></i>Doctor Form</h3>
      <div class="col-md-8 col-lg-9">
 			     <div class="row">
 			     <div class="col-md-6 mx-auto">
-			      <h1 class="h3">Doctor Form</h1>
 			      <form th:action="@{/admin/doctors}" method="POST" th:object="${doctor}">
 			      <div class="form-group">
-			          <label>Name:</label>
-			          <input type="text" class="form-control" th:field="*{name}"> 
+			          <label style="font-family: 'Be Vietnam', sans-serif;">Name:</label>
+			          <input   type="text" class="form-control mac" th:field="*{name}"> 
 			          
 			       </div>
 			       <div class="form-group" >
-			          <label>Qualification:</label>
-			         <input type="text" class="form-control" th:field="*{qualification}"> 
+			          <label style="font-family: 'Be Vietnam', sans-serif;">Qualification:</label>
+			         <input  type="text" class="form-control mac" th:field="*{qualification}"> 
 			        </div>
 			  
 			      
 			         <div class="form-group">
-			         <label>Image_URL:</label>
-			         <input type="text" class="form-control" th:field="*{image}"> 
+			         <label style="font-family: 'Be Vietnam', sans-serif;">Image_URL:</label>
+			         <input   type="text" class="form-control mac" th:field="*{image}"> 
 			         </div>
 			         <div class="form-group">
-			         <label>Speciality:</label>
-			         <select  class="form-control" name="departmentId">
+			         <label style="font-family: 'Be Vietnam', sans-serif;">Speciality:</label>
+			         <select style="border-radius: 20px;" class="form-control " name="departmentId">
 			         <option th:each="department:${dp}" th:text="${department.name}" th:value="${department.id}"></option>
 			         </select>
 			         </div>
-			         <input type="submit" value="Submit" class="btn btn-primary btn-block">
+			         <input  style="border-radius: 20px;" type="submit" value="Submit" class="btn btn-primary btn-block ">
 			      </form>
 			</div>
 		</div>

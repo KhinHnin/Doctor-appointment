@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Doctor</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -11,38 +11,40 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/sidebar.css/}" type="text/css">
 </head>
 <body>
-
+	<div th:replace="fragment/sidebar::app-sidebar"></div>
+	<div class="container" style="width:100%;margin-left:200px;">
+		<h3 style="padding:20px;"  class="h3 text-gray-900 mb-4"><i class="fas fa-user-md mr-3" aria-hidden="true" style="width:25px;"></i>Edit Doctor Form</h3>
     <div class="col-md-8 col-lg-9">
 			     <div class="row">
 			     <div class="col-md-6 mx-auto">
-			      <h1 class="h3">Edit Doctor Form</h1>
 			    <form th:action="@{/admin/doctors}" th:object="${doctor}" method="POST">
 			      <input type="hidden" th:field="*{id}" />
-			      <div class="form-group">
-			          <label>Name:</label>
+			    		      <div class="form-group">
+			          <label style="font-family: 'Be Vietnam', sans-serif;">Name:</label>
 			          <input type="text" class="form-control" th:field="*{name}"> 
 			          
 			       </div>
 			       <div class="form-group" >
-			          <label>Qualification:</label>
+			          <label style="font-family: 'Be Vietnam', sans-serif;">Qualification:</label>
 			         <input type="text" class="form-control" th:field="*{qualification}"> 
 			        </div>
-			  
 			      
 			         <div class="form-group">
-			         <label>Image_URL:</label>
+			         <label style="font-family: 'Be Vietnam', sans-serif;">Image_URL:</label>
 			         <input type="text" class="form-control" th:field="*{image}"> 
 			         </div>
 			         <div class="form-group">
-			         <label>Speciality:</label>
+			         <label style="font-family: 'Be Vietnam', sans-serif;">Speciality:</label>
 			         <select  class="form-control" name="departmentId">
-			         <option th:each="department:${departments}" th:text="${department.name}" th:value="${department.id}" th:selected="${department.id==doctor.department.id}"></option>
+			         <option th:each="department:${dp}" th:text="${department.name}" th:value="${department.id}"></option>
 			         </select>
 			         </div>
-			         <input type="submit" value="Submit" class="btn btn-primary btn-block">
+			          <input type="submit" value="Submit" class="btn btn-primary btn-block" style="border-radius: 20px;">
 			      </form>
+			</div>
 			</div>
 		</div>
 		</div>

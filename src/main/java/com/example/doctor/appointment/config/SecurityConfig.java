@@ -42,7 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http.authorizeRequests()
 		//    .anyRequest().permitAll();
+<<<<<<< HEAD
 		 .antMatchers("/css/**","/js/**","/images/**").permitAll()
+=======
+			 .antMatchers("/css/**","/js/**","/images/**","/favicon.ico").permitAll()
+>>>>>>> 4b8c191a85b0298fcafb753b445582ab2a8dd7a4
 		     .antMatchers("/admin/**").hasRole("ADMIN")
 		     .anyRequest().permitAll()
 		     .and()
