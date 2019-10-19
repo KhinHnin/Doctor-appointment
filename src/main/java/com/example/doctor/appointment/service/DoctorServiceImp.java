@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.doctor.appointment.entity.Department;
 import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.repository.DoctorRepository;
 
@@ -42,4 +43,10 @@ public class DoctorServiceImp implements DoctorService{
 		
 	}
 
+	@Override
+	public List<Doctor> getDoctorsByDepartment(Department department) {
+		
+		return doctorRepository.findAllByDepartment(department);
+
+}
 }
