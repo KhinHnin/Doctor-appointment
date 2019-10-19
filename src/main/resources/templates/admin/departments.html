@@ -16,6 +16,7 @@
 		<form th:action="@{/admin/departments}" method="POST"th:object="${department}">
 
 			<input type="text" th:field="*{name}" placeholder="Enter Name">
+			<input type="text" th:field="*{image}" placeholder="Enter Image URL">
 			<input type="submit" value="Create">
 
 		</form>
@@ -23,10 +24,12 @@
 			<tr>
 				<th>ID</td>
 				<th>Department Name</td>
+				<th>Department Image URL</td>
 			</tr>
 			<tr th:each="department:${departments}">
 				<td th:text="${department.id}"></td>
 				<td th:text="${department.name}"></td>
+				<td th:text="${department.image}"></td>
 			</tr>
 		</table>
 

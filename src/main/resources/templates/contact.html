@@ -14,6 +14,8 @@
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Carme&display=swap" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/nav.css}">
+<script th:src="@{/js/nav.js}"></script>
 <style type="text/css">
 body, html {
 	height: 100%;
@@ -159,7 +161,7 @@ text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 			<div class="col-md-6" style="background: #f8f7fc">
 
 				<h2 class="h1 text-center my-2" style="color: #004d99">Get in Touch</h2>
-				<form th:action="@{/}" method="POST" th:object="${contact}">
+				<form th:action="@{/contactus}" method="POST" th:object="${contact}">
 					<div class="form-group">
 
 						<input type="text" class="form-control mac" th:field="*{name}"

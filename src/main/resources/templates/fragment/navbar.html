@@ -14,16 +14,18 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Carme&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" th:href="@{/css/nav.css}">
+<script th:src="@{/js/nav.js}"></script>
 </head>
-<body>
-	<div class="col-lg-12">
+ <body>
+     <div class="col-lg-12">
 		<nav
 			class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar"
 			th:fragment="app-navbar">
 			<a class="navbar-brand" th:href="@{/}"> <img height="100"
-				width="120"
-				src="https://lh3.googleusercontent.com/ISRIbRw1lVGIqGhM-DCu0aCDnRiYc8XMU0mAb0P0kjGRmyLbW_Vj19owk0kVaPBafIKYeTEsT1104RK9sjpKkxsVQRRO92fH3RgbjmDJSMqop-HQdRLFN7aENRHNCxn5D0bApX6ap4jSBYme29GiD_vbcSr8xHd2G-Zk2xg2eOMXliPAqftdBZ3OGT8iPq0pRg1Tb_f3EGSgg3rBv6quUIu97tuwMBMYsjELVP-_v2tz4KHlx2OYNyYYml1s4oE4mqCzlabzxU3rG5QzD9S-AZ-ROzEiegYapShnsPvLYPE1qoq0m4JGIRY4el00Myz5R_tM4zBWcfBfymFTKJ6uR78v6lDAsdDO6y9LMLPOoebmEl5dS3mUqbptYZwnE71RxGCC1RaKXH17qp4VJZFg4TQlyhbeT-u1SX2ltTYXQLbjXEpr0Gyy2yatHJDLuegEO8OMgYk4ZwWpaLI7VPOOXhaO_PNij4lF3tSbyWXKBf2Gb174diyqIk9HIrSGBEahq5Ake-HbdJJs4E_crUfsQFZ7H6MeHInmvIRAZfiUMaChoQ9SvhPk7G-I4s9h8L9Bb3C-sEpjYvaiWw7JRyKwfqb93qmgFrCHFepRVDq8k7KcoTrsh0kN3xYnQQzYglB8VtH9bEFc7d3LB5w8IWhvYwZ77dG-6NoEDy4PT-fc5WOF9gtBnmp3=w225-h224-no" />
+				width="110" th:src="@{/images/download.png}" />
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -35,7 +37,7 @@
 			<div
 				class="collapse navbar-collapse main-menu-item justify-content-center"
 				id="navbarSupportedContent">
-				<ul class="navbar-nav align-items-center" >
+				<ul class="navbar-nav align-items-center">
 					<li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
 					<li class="nav-item"><a class="nav-link">Find Doctors</a></li>
 					<li class="nav-item"><a class="nav-link">Appointments</a></li>
@@ -45,8 +47,7 @@
 			</div>
 		</nav>
 	</div>
-	
-
+	<!-- /.navbar -->
 
 	<!-- Bootstrap Javascript -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
