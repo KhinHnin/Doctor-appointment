@@ -2,6 +2,7 @@ package com.example.doctor.appointment.service;
 
 import java.util.List;
 
+import com.example.doctor.appointment.entity.Department;
 import com.example.doctor.appointment.entity.Doctor;
 
 public interface DoctorService {
@@ -13,5 +14,7 @@ public interface DoctorService {
 	public Doctor getDoctor(Integer doctor_id);
 
 	public void deleteDoctor(Integer doc_id);
+
+	public List<Doctor> getDoctorsByDepartment(Department department);
 
 }

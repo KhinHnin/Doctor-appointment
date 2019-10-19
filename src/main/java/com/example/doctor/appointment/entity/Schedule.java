@@ -1,5 +1,7 @@
 package com.example.doctor.appointment.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,18 +31,31 @@ public class Schedule {
 
 	@Column(name = "end_Time")
 	private String toTime;
+	
+	@Column(name = "date")
+	private Date date;
 
 	public Schedule() {
 
 	}
 
-	public Schedule(int id, Doctor doctor, String day, String fromTime, String toTime) {
+	public Schedule(int id, Doctor doctor, String day, String fromTime, String toTime, Date date) {
 		super();
 		this.id = id;
 		this.doctor = doctor;
 		this.day = day;
 		this.fromTime = fromTime;
 		this.toTime = toTime;
+		this.date = date;
+	}
+
+	public Schedule(Doctor doctor, String day, String fromTime, String toTime, Date date) {
+		super();
+		this.doctor = doctor;
+		this.day = day;
+		this.fromTime = fromTime;
+		this.toTime = toTime;
+		this.date = date;
 	}
 
 	public int getId() {
@@ -83,4 +98,17 @@ public class Schedule {
 		this.toTime = toTime;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	
+	
+	
+
+	
 }
