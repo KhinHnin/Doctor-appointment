@@ -22,9 +22,16 @@
 	  th:each="department:${departments}" th:text="${department.name}"></a>
    </div>
    
-    
+     <h2>Search by doctor name:</h2>
+    <div class="list-group">
+	 <a th:href="@{/findDoctor(doc=${doctor.id})}" class="list-group-item"
+	  th:each="doctor:${dList}" th:text="${doctor.name}"></a>
+   </div>
+   
+   
+            
 								
-				<div class="col-lg-3 col-md-4 mb-4" th:each="doctor:${d}">
+				<div class="col-lg-3 col-md-4 mb-4" th:each="doctor:${dr}">
 				<div class="h-100">
 							<a ><img class="card-img-top "
 								th:src="${doctor.image}"

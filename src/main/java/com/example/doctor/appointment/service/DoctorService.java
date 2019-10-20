@@ -16,5 +16,11 @@ public interface DoctorService {
 	public void deleteDoctor(Integer doc_id);
 
 	public List<Doctor> getDoctorsByDepartment(Department department);
+	
+	
+
+	public List<Doctor> getDoctorsById(Iterable<Integer> id);
+	
+	
 
 }
