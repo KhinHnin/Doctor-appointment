@@ -11,24 +11,41 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+	
+<style type="text/css">
+
+table{
+	height:100%;
+	font-family: 'Carme', sans-serif;
+	text-color:#004d99;
+  	text-align:left;
+}
+
+
+</style>
+
 </head>
 <body>
 
 <div class="container" th:each="d:${doctor}">
-		<div class="row mt-5 mx-auto" >
+		<div class="row mt-5 mx-5" >
 			<div class="col-md-4 col-lg-3" >
-				  
-		    <img class="card-img-top " th:src="${d.image}" alt="">
+		    	<img class="card-img-top " th:src="${d.image}" alt="">
+		    	<br>
+		    	<i class="fas fa-phone-alt display-4"></i>
 			</div>
 			<div class="col-md-8 col-lg-9" >
-			      <h1 th:text="${d.name}"></h1>
-			      <p class="lead" th:text="'Qualification- '+ ${d.qualification}"></p>
-			      <p  th:text="'Speciality- '+ ${d.department.name}"></p>
-			      <div class="dropdown">
-			      
-			      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Schedule</button>
-			      <div class="dropdown-menu">
-			      <table class="table mt-3 dropdown-item">
+				<table class="table">
+					<tr><th><h1 th:text="${d.name}"></h1></th></tr>
+			      	<tr>
+			      		<td><h2>Qualification</h2><p class="lead" th:text="${d.qualification}"></p></td>
+			      	</tr>
+			     	<tr><td><h2>Speciality</h2><p th:text=" ${d.department.name}"></p></td></tr>
+			      	<tr><td>
+			      	<div class="dropdown">
+			      	<button class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" style="size:70px">Schedule</button>
+			      <div class="dropdown-menu mt-3">
+			      <table class="table mt-2 dropdown-item mx-auto">
 			      <tr>
 			        <th>Day</th>
 			        <th>Time</th>
@@ -42,9 +59,10 @@
 			      </table>
 			      </div>
 			      </div>
-			      </div>
+			     </table>
+			   </div>
 			      
-</div>
+			</div>
 </div>
 </div>
 
