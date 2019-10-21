@@ -12,4 +12,5 @@ import com.example.doctor.appointment.entity.Doctor;
 public interface DoctorRepository extends JpaRepository<Doctor, Integer>{
 
 	List<Doctor> findAllByDepartment(Department department);
+	
 }

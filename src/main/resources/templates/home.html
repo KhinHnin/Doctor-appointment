@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -27,7 +30,6 @@ body, html {
 	margin: 0;
 	font-family: 'Carme', sans-serif;
 }
-
 .bg {
 	/* Full height */
 	height: 100%;
@@ -40,7 +42,6 @@ body, html {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
 .bg .content {
 	position: absolute; /* Position the background text */
 	width: 270px;
@@ -59,9 +60,7 @@ border-radius: 3px 40px 0px 40px;
 	-webkit-transition: width 1s, height 1s, -webkit-transform 1s;
 	/* Safari */
 	transition: width 1s, height 1s, transform 1s;
-
 }
-
 .bg .content:hover {
 	/*color: #f1f1f1; Grey text */
 	 color: white;
@@ -75,6 +74,7 @@ border-radius: 3px 40px 0px 40px;
 </head>
 
 <body>
+	<h1>Home Page</h1>
 
 	<!-- Navigation -->
 	<div th:replace="fragment/navbar :: app-navbar"></div>
@@ -111,6 +111,6 @@ border-radius: 3px 40px 0px 40px;
 		crossorigin="anonymous"></script>
 
 </body>
+</html> 
 
 </html>
-

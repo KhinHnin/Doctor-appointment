@@ -1,8 +1,5 @@
 package com.example.doctor.appointment.controller;
-
-import java.awt.print.Book;
 import java.util.List;
-import java.util.Locale.Category;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -54,21 +51,47 @@ public class HomeController {
 		model.addAttribute("departments",departmentList);
 		List<Doctor> doctorList=doctorService.getDoctors();
 		model.addAttribute("dList",doctorList);
+		
 		String dpStr=request.getParameter("dp");
-		if(dpStr==null) {
+		String docStr=request.getParameter("doc");
+		
+		if((dpStr==null)&(docStr==null)) {
 
 		List<Doctor> doctors=doctorService.getDoctors();
-		model.addAttribute("d",doctors);
-		}else {
+		model.addAttribute("dr",doctors);
+		}else if(dpStr!=null){
+		
 			Integer dpId=Integer.parseInt(dpStr);
 			Department department=departmentService.getDepartment(dpId);
             List<Doctor> doctors=doctorService.getDoctorsByDepartment(department);
-			model.addAttribute("d",doctors);
-		}
+			model.addAttribute("dr",doctors);
+		
+			
+		}else {
+		Integer docId=Integer.parseInt(docStr);
+		Doctor doctor=doctorService.getDoctor(docId);
+		
+		model.addAttribute("dr",doctor);
+	}
+		
+		
+//		if((dpStr==null)&(docStr==null)) {
+//			List<Doctor> doctors=doctorService.getDoctors();
+//			model.addAttribute("dr",doctors);
+//		}else
+//		{
+//			
+//			Integer docId=Integer.parseInt(docStr);
+//			Doctor doctor=doctorService.getDoctor(docId);
+//			
+//			model.addAttribute("dr",doctor);
+//		}
+		
 		
 		return "finding_doctor";
+	
+	
+
 	}
-	
-	
 	
 }

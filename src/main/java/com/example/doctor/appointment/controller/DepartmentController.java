@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.doctor.appointment.entity.Department;
+import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.service.DepartmentService;
 
 @Controller
@@ -33,4 +35,13 @@ public class DepartmentController {
 		model.addAttribute("department",new Department());
 		return "admin/departments";
 	}
+	
+	@GetMapping("/edit")
+	public String editDepartment(@RequestParam("id")Integer deptid ,Model model) {
+		Department dept=departmentService.getDepartment(deptid);
+		model.addAttribute("departments",dept);
+		return "admin/editDepartment" ;
+	}
+	
+
 }
