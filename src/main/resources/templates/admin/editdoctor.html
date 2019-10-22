@@ -39,7 +39,7 @@
 			         <div class="form-group">
 			         <label style="font-family: 'Be Vietnam', sans-serif;">Speciality:</label>
 			         <select  class="form-control" name="departmentId">
-			         <option th:each="department:${dp}" th:text="${department.name}" th:value="${department.id}"></option>
+			         <option th:each="department:${departments}" th:text="${department.name}" th:value="${department.id}" th:selected="${department.id==doctor.department.id}"></option>
 			         </select>
 			         </div>
 			          <input type="submit" value="Submit" class="btn btn-primary btn-block" style="border-radius: 20px;">

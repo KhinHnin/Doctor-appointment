@@ -36,11 +36,16 @@ public class HomeController {
 		return "doctor_profile";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/departments")
 	public String showDepartments(Model model) {
 		
 		List<Department> department=departmentService.getDepartments();
 		model.addAttribute("departments",department);
+		return "view_departments";
+	}
+	
+	@GetMapping("/")
+	public String showHome() {
 		return "home";
 	}
 	

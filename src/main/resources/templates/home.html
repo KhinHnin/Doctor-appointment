@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="ISO-8859-1">
@@ -28,16 +29,25 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap"
 	rel="stylesheet">
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
-<<<<<<< HEAD
 
-.card {
+body {
+  background-color: #ECF1EF;
+} 
+h1 {
+	color: #ffa500;
+	font-weight: bold;
+}
+
+.service-card {
 	padding-left: auto;
 	padding-right: auto;
-	min-height: 200px;
-	margin-top: 15px;
+	min-height: 150px;
 	color: #004d99;
+	border-radius: 50%;
 	text-shadow: 2px 2px 0px #FFFFFF, 3px 2px 0px rgba(0, 0, 0, 0.15);
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
 		rgba(0, 0, 0, 0.12);
@@ -45,166 +55,288 @@
 	transition: .25s box-shadow;
 }
 
-.card:focus, .card:hover {
+.service-card:focus, .service-card:hover {
 	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0
 		rgba(0, 0, 0, 0.15);
 }
-
-.card .content {
-	text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15);
+<!--Service-slide -->
+.carousel-inner .item>img {
+	width: 800px;
+	min-height: 400px;
 }
 
-.card-img-top {
-	min-height: 200px;
-=======
-body, html {
-	height: 100%;
-	margin: 0;
-	font-family: 'Carme', sans-serif;
+/*----Department/Doctors --*/
+.how-section1 {
+	/*    margin-top:-15%; */
+	padding: 20px;
 }
-.bg {
-	/* Full height */
-	height: 100%;
-	position: relative;
-	background-image: linear-gradient(rgba(0, 130, 170, 0),
-		rgba(0, 130, 170, 1)),
-		url("https://scontent.fmdl2-1.fna.fbcdn.net/v/t1.0-9/74209905_940417119672633_2668622687500238848_o.jpg?_nc_cat=106&_nc_oc=AQlRtyf_loDn8RDgDH9lNQtNtffwWjc9H9Su79jYrSb_seg-woHGtGgmLDoW_Rx1OWM&_nc_ht=scontent.fmdl2-1.fna&oh=405e52d6fa2002c9ef9b057876db0ce8&oe=5E273F95");
-	/* Center and scale the image nicely */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+
+.how-section1 h4 {
+	color: #ffa500;
+	font-size: 30px;
 }
-.bg .content {
-	position: absolute; /* Position the background text */
-	width: 270px;
-	height: 270px;
+
+.how-section1 .subheading {
+	color: #3931af;
+	font-size: 20px;
+}
+
+.how-section1 .row {
+	/* margin-top: 10%; */
 	
-border-radius: 3px 40px 0px 40px;
-	bottom: 130px;
-	right: 20%; /* At the bottom. Use top:0 to append it to the top */
-	background: rgb(0, 0, 0); /* Fallback color */
-	background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-	color: #fff;
-	text-shadow: 0 -2px 5px #ff0, 2px 2px 2px
-		rgba(0, 0, 0, 1);
-	box-shadow: inset 0 0 7px 4px rgba(255, 255, 255, .5);
-	padding: 30px;
-	-webkit-transition: width 1s, height 1s, -webkit-transform 1s;
-	/* Safari */
-	transition: width 1s, height 1s, transform 1s;
 }
-.bg .content:hover {
-	/*color: #f1f1f1; Grey text */
-	 color: white;
-  text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
-	
-	-webkit-transform: rotate(10deg); /* Safari */
-	transform: rotate(10deg);
-	
->>>>>>> 4b8c191a85b0298fcafb753b445582ab2a8dd7a4
+
+.how-img {
+	text-align: center;
 }
+
+.how-img img {
+	width: 40%;
+}
+
+/* ----Dept-btn----- */
+.myButton {
+	background:linear-gradient(to bottom, #204e9e 5%, #476e9e 100%);
+	background-color:#204e9e;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:5px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #476e9e 5%, #204e9e 100%);
+	background-color:#476e9e;
+	color:#ffffff;
+	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0
+		rgba(0, 0, 0, 0.15);
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+hr.style-four{
+    border: 0;
+    height: 1px;
+ 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
 </style>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" th:href="@{/css/nav.css}">
+ <script th:src="@{/js/nav.js}"></script>
 </head>
-<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
-<body>
-	<h1>Home Page</h1>
 
+<body>
 	<!-- Navigation -->
-	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<div th:replace="fragment/navbar :: app-navbar"> <p class="content">Hello World!</p></div>
 
 	<!-- service -->
-	<div class="container py-5">
+	<div class="container mt-5 text-center">
 		<div class="row justify-content-center">
 			<div class="col-lg-3">
 				<div class="main_title">
-					<h2 class="h1">Our Service</h2>
+					<h1>Our Service</h1>
 				</div>
 			</div>
+		</div>
+
+		<!-- service-slide -->
+		<div class="container mt-4">
+			<!-- Button trigger modal -->
+			<button type="button" class="myButton btn-lg" 
+				data-toggle="modal" data-target="#ModalCarousel">Click here
+				to view more services</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="ModalCarousel" tabindex="-1"
+				role="dialog" aria-labelledby="ModalCarouselLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div id="carousel-modal-demo" class="carousel slide"
+							data-ride="carousel">
+
+
+
+							<!-- Sliding images statring here -->
+							<div class="carousel-inner">
+								<div class="item">
+									<img th:src="@{images/asethe.jpg}" alt="1">
+								</div>
+								<div class="item">
+									<img th:src="@{images/cttxt2.jpg}" alt="2">
+								</div>
+								<div class="item">
+									<img th:src="@{images/ct.jpg}" alt="3">
+								</div>
+								<div class="item">
+									<img th:src="@{images/eopd.jpg}" alt="4">
+								</div>
+								<div class="item">
+									<img th:src="@{images/hdtxt.jpg}" alt="5">
+								</div>
+								<div class="item">
+									<img th:src="@{images/hearttxt.jpg}" alt="6">
+								</div>
+								<div class="item">
+									<img th:src="@{images/icutxt.jpg}" alt="7">
+								</div>
+								<div class="item">
+									<img th:src="@{images/lapatxt1.jpg}" alt="8">
+								</div>
+								<div class="item">
+									<img th:src="@{images/room1.jpg}" alt="9">
+								</div>
+								<div class="item active">
+									<img th:src="@{images/tkatxt.jpg}" alt="10">
+								</div>
+
+							</div>
+							<!-- Next / Previous controls here -->
+							<a class="left carousel-control" href="#carousel-modal-demo"
+								data-slide="prev"> <span
+								class="glyphicon glyphicon-chevron-left"></span>
+							</a> <a class="right carousel-control" href="#carousel-modal-demo"
+								data-slide="next"> <span
+								class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- service-slide -->
+		<div class="row mx-4 my-5">
+			<!-- single department -->
+			<div class="col-lg-2 text-center col-sm-4 mx-auto my-3">
+				<div class="service-card">
+					<div class="content">
+						<i class="fas fa-plus-circle mt-3 mb-2" style="font-size: 50px"></i>
+					</div>
+					<h4 class="h5">Emergecy treatment</h4>
+				</div>
+			</div>
+
+			<div class="col-lg-2 text-center col-sm-4 mx-auto my-3">
+				<div class="service-card">
+					<div class="content">
+						<i class="fas fa-heartbeat mt-3 mb-2" style="font-size: 50px"></i>
+					</div>
+					<h4 class="h5">Cardiology</h4>
+				</div>
+			</div>
+			<!-- single department -->
+			<div class="col-lg-2 text-center col-sm-4 mx-auto my-3">
+				<div class="service-card">
+					<div class="content">
+						<i class="fas fa-microscope mt-3 mb-2" style="font-size: 50px"></i>
+					</div>
+					<h4 class="h5">Medical Lab</h4>
+				</div>
+			</div>
+			<!-- single department -->
+			<div class="col-lg-2 text-center col-sm-4 mx-auto my-3">
+				<div class="service-card">
+					<div class="content">
+						<i class="fas fa-user-nurse mt-3 mb-2" style="font-size: 50px"></i>
+					</div>
+					<h4 class="h5">Nursing Care</h4>
+				</div>
+			</div>
+			<!-- single department -->
+			<div class="col-lg-2 text-center col-sm-4 mx-auto my-3">
+				<div class="service-card">
+					<div class="content">
+						<i class="fas fa-ambulance mt-3 mb-2" style="font-size: 50px"></i>
+					</div>
+					<h4 class="h5">Ambulance Care</h4>
+				</div>
+			</div>
+			<!-- single department -->
+			<div class="col-lg-2 text-center col-sm-4 mx-auto my-3">
+				<div class="service-card">
+					<div class="content">
+						<i class="far fa-hospital mt-3 mb-2" style="font-size: 50px"></i>
+					</div>
+					<h4 class="h5">Room Service</h4>
+				</div>
+			</div>
+
 		</div>
 	</div>
-		<!-- service-slide -->
-
-
-		<!-- service-slide -->
-		<div class="row mx-4">
-			<!-- single department -->
-			<div class="col-lg-2 text-center col-sm-7 service">
-				<div class="card ">
-					<div class="content">
-						<i class="fas fa-plus-circle my-4" style="font-size: 50px"></i>
-					</div>
-					<h4>Emergecy treatment</h4>
-				</div>
-			</div>
-
-			<div class="col-lg-2 text-center col-sm-7">
-				<div class="card">
-					<div class="content">
-						<i class="fas fa-heartbeat my-4" style="font-size: 50px"></i>
-					</div>
-					<h4>Cardiology</h4>
-				</div>
-			</div>
-			<!-- single department -->
-			<div class="col-lg-2 text-center col-sm-7">
-				<div class="card">
-					<div class="content">
-						<i class="fas fa-microscope my-4" style="font-size: 50px"></i>
-					</div>
-					<h4>Medical Lab</h4>
-				</div>
-			</div>
-			<!-- single department -->
-			<div class="col-lg-2 text-center col-sm-7">
-				<div class="card">
-					<div class="content">
-						<i class="fas fa-user-nurse my-4" style="font-size: 50px"></i>
-					</div>
-					<h4>Nursing Care</h4>
-				</div>
-			</div>
-			<!-- single department -->
-			<div class="col-lg-2 text-center col-sm-7">
-				<div class="card">
-					<div class="content">
-						<i class="fas fa-ambulance my-4" style="font-size: 50px"></i>
-					</div>
-					<h4>Ambulance Care</h4>
-				</div>
-			</div>
-			<!-- single department -->
-			<div class="col-lg-2 text-center col-sm-7">
-				<div class="card">
-					<div class="content">
-						<i class="far fa-hospital my-4" style="font-size: 50px"></i>
-					</div>
-					<h4>Room Service</h4>
-				</div>
-			</div>
-		
-		</div>
 	<!-- service-end -->
+	
+<hr class="style-four" />
 
 	<!-- department -->
 	<section class="container">
-		<div class="row py-5">
+		<div class="row ">
 			<div class="mx-auto">
-				<h1>Our Department</h1>
+				<h1>Our Departments</h1>
 			</div>
 		</div>
 	</section>
-	<div class="row mx-4">
-	<div class="col-lg-3" th:each="department:${departments}">
-		<div class="card">
-			<img class="card-img-top img-fluid " th:src="${department.image}" alt="">
-			<div class="card-body">
-				<h4 class="h4" th:text="${department.name}"></h4>
+	<!-- department-card -->
+	<div class="how-section1">
+		<div class="row my-5 mx-3">
+			<div class="col-md-6 how-img">
+				<img th:src="@{images/depts1.png}" class="rounded-circle img-fluid mb-3"
+					alt="" />
+			</div>
+			<div class="col-md-6 pl-5">
+				<h4>Find Our Departments</h4>
+				<h4 class="subheading">Your Life, Our Best Value</h4>
+				<p class="text-muted">Our hospitals provides comprehensive care
+					and treatment planning by focusing on multidisciplinary care,
+					ensuring the highest benefit to our parent.</p>
+				<a th:href="@{/departments}" class="myButton mt-4">View More Departments</a>
+			</div>
+		</div>
+		</div>
+			<!-- department-end -->
+			
+		<hr class="style-four" />
+		
+			
+		<!-- doctor -->
+		
+		<section class="container">
+		<div class="row ">
+			<div class="mx-auto">
+				<h1>Our Doctors</h1>
+			</div>
+		</div>
+	</section>
+		<div class="how-section1 ">
+		<div class="row my-5 mx-3">
+			
+			<div class="col-md-6 pl-5">
+				<h4>Find Our Doctors</h4>
+				<h4 class="subheading">Your Life, Our Best Value</h4>
+				<p class="text-muted">Our hospitals provides comprehensive care
+					and treatment planning by focusing on multidisciplinary care,
+					ensuring the highest benefit to our parent.</p>
+				<a th:href="@{/departments}" class="myButton mt-4">Find More Doctors</a>
+			</div>
+			<div class="col-md-6 how-img">
+				<img th:src="@{images/doc.png}" class="rounded-circle img-fluid mt-4"alt="" />
 			</div>
 		</div>
 	</div>
-	</div>
-	<!-- department-end -->
+	
+	<!-- doctor-end -->
+
+<hr class="style-four" />
 
 	<!-- Footer -->
 	<div th:replace="fragment/footer :: app-footer"></div>
@@ -223,7 +355,13 @@ border-radius: 3px 40px 0px 40px;
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
+	<!-- service JavaScript -->
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
 </body>
-</html> 
+</html>
 
 </html>

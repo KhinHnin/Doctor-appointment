@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="ISO-8859-1">
@@ -9,20 +10,35 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+
+		<link href="https://fonts.googleapis.com/css?family=Carme&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" th:href="@{/css/nav.css}">
+ <script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=Carme&display=swap" rel="stylesheet">
-
 <style type="text/css">
-
+body {
+  background-color: #ECF1EF;
+} 
+h1 {
+	color: #ffa500;
+	font-weight: bold;
+}
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width:250px;
-  height:300px;
-  padding:15px;
+  height:270px;
   margin:10px;
   border-radius:5px;
   transition: 0.3s;
@@ -32,6 +48,7 @@
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
+border:2px solid #004d99;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card>a{ color:#004d99;}
@@ -81,21 +98,29 @@ text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 	position:relative;
 	top:1px;
 }
+hr.style-four{
+    border: 0;
+    height: 1px;
+ 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
 
 </style>
-
 </head>
 <body>
 	<!-- Navigation -->
 	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
+	<div class="row ">
+			<div class="mx-auto mt-5">
+				<h1>Contact Us</h1>
+			</div>
+		</div>
+	<div class="container my-4">
 
-	<div class="container my-5">
-
-
-		<div class="row justify-content-md-center">
-			<div class="card ">
+		<div class="row justify-content-md-center mb-5">
+			<div class="card mx-auto">
 				<a th:href="@{https://www.google.com/maps/place/Grand+Mandalay+Hospital/@21.974441,96.12156,16z/data=!4m5!3m4!1s0x0:0x84d1546de1ac3431!8m2!3d21.9744409!4d96.1215597?hl=en}">
-				<i class="fas fa-map-marked-alt display-4 pb-3 "></i></a>
+				<i class="fas fa-map-marked-alt display-4 pt-4 pb-3 "></i></a>
 				<h4>Address</h4>
 				<div class="card-body">
 					<p class="card-text">Corner of 30th x 57th Street,<br>
@@ -103,26 +128,26 @@ text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
    				 Mandalay</p>
 				</div>
 			</div>
-			<div class="card ">
+			<div class="card mx-auto">
 				<a th:href="@{/contactus}">
-				<i class="fas fa-phone display-4 pb-3"></i></a>
+				<i class="fas fa-phone display-4 pt-4 pb-3"></i></a>
 				<h4>Phone Number</h4>
 				<div class="card-body">
 					<p class="card-text">09-40 30 400 41,<br>09-40 30 400 42,<br>
 					09-77777 80 41,<br>09-97777 80 41</p>
 				</div>
 			</div>
-			<div class="card ">
+			<div class="card mx-auto">
 				<a th:href="@{https://www.gmail.com}">
-				<i class="fas fa-envelope-open-text display-4 pb-3"></i></a>
+				<i class="fas fa-envelope-open-text display-4 pt-4 pb-3"></i></a>
 				<h4>Email</h4>
 				<div class="card-body">
 					<p class="card-text">gmh.y2017@gmail.com</p>
 				</div>
 			</div>
-			<div class="card ">
+			<div class="card mx-auto">
 				<a th:href="@{https://web.facebook.com/grandmandalay/}" >
-				<i class="fab fa-facebook  display-4 pb-3"></i></a>
+				<i class="fab fa-facebook  display-4 pt-4 pb-3"></i></a>
 				<h4>Facebook</h4>
 				<div class="card-body">
 					<p class="card-text">www.facebook.com/<br>grandmandalay</p>
@@ -130,23 +155,26 @@ text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 			</div>
 
 		</div>
-		<div class="row my-5">
-			<div class="col-md-6">
+		
+		<hr class="style-four" />
+		
+		<div class="row my-5 ">
+			<div class="col-md-6 ">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4400.013997994417!2d96.11933650374202!3d21.
 			         974651799349143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb6db1ef621837%3A0x84d1546de1ac3431!2s
 			         Grand%20Mandalay%20Hospital!5e0!3m2!1sen!2smm!4v1570955027115!5m2!1sen!2smm"
 
-			           width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			           width="550" height="450" frameborder="1" style="border:5px solid white;" allowfullscreen=""></iframe>
 			     
 			     </div>
 			    
 
 
 		
-			<div class="col-md-6" style="background: #f8f7fc">
+			<div class="col-md-6 ">
 
-				<h2 class="h1 text-center my-2" style="color: #004d99">Get in Touch</h2>
+				<h1 class="text-center my-2" >Get in Touch</h1>
 				<form th:action="@{/contactus}" method="POST" th:object="${contact}">
 					<div class="form-group">
 
@@ -179,7 +207,7 @@ text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 			</div>
 		</div>
 	</div>
-
+	<hr class="style-four" />
 	<!-- Footer -->
 	<div th:replace="fragment/footer :: app-footer"></div>
 
