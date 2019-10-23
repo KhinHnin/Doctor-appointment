@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Find Doctor</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,41 +12,79 @@
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 
+<link rel="stylesheet" th:href="@{/css/findDoc.css/}" type="text/css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+</style>
 
 </head>
 <body>
-     <h1>Find a doctor</h1>
-
-   
-      <div class="list-group">
-	 <a th:href="@{/findDoctor(dp=${department.id})}" class="list-group-item"
-	  th:each="department:${departments}" th:text="${department.name}"></a>
-   </div>
-   
-     <h2>Search by doctor name:</h2>
-    <div class="list-group">
-	 <a th:href="@{/findDoctor(doc=${doctor.id})}" class="list-group-item"
+	<div class="container">
+    <div class="col-12 bg-gray my-5 py-5 px-3 px-lg-5">
+       	 <div class="row">
+           	<div class="col-12 col-md-6 col-lg flex-grow-1">
+                <label class="text-light">Search by specialty</label>
+             <div class="dropdown">
+              <div class="btn-group">
+  				 <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  		 		--- Please select Specility---
+ 				 </button>
+ 		  <div class="dropdown-menu">
+ 		   <div class="list-group">
+ 		  <a th:href="@{/findDoctor(dp=${department.id})}" class="list-group-item list-group-item-action list-group-item-dark"
+		 	  th:each="department:${departments}" th:text="${department.name}"></a>
+		  </div>
+  		</div>	
+  		</div>
+       </div>
+       </div>
+		<div class="col-12 col-lg flex-grow-1">
+		  <label  class="text-light">Search by doctor&#39;s name or surname</label>
+		   <div class="dropdown">
+		 	<div class="btn-group">
+  			 <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  		 		--- Please select Doctor name ---
+ 			 </button>
+ 		  <div class="dropdown-menu">
+ 		    <div class="list-group">
+ 		   <a th:href="@{/findDoctor(doc=${doctor.id})}"  class="list-group-item list-group-item-action list-group-item-dark"
 	  th:each="doctor:${dList}" th:text="${doctor.name}"></a>
-   </div>
-   
-   
-            
-								
-				<div class="col-lg-3 col-md-4 mb-4" th:each="doctor:${dr}">
-				<div class="h-100">
-							<a ><img class="card-img-top "
-								th:src="${doctor.image}"
-								alt=""></a>
-
-							<h4 class="h5" th:text="${doctor.name}"></h4>
-								
-							<button>Book</button>
-							<button><a th:href="@{/docPf(id=${doctor.id})}">Profile</a></button>
-						</div>
-							
-						</div>
-				
-     
+  		</div>	
+		</div>
+  			
+  			<div class="col-12 col-lg flex-grow-1">
+  			<div class="ml-5 col-lg-2">
+  			<a th:href="@{/findDoctor}" class="btn btn-light ">Find All Doctor</a>
+  			</div></div>
+  		</div>
+  		</div>
+  		</div>
+  		
+  </div>
+  </div> 
+  </div> 
+  
+    <!--  Doctor images -->
+    <div class=maincontent>
+		<div class="col-12 bg-gray my-3  py-5 px-3 px-lg-5">
+    		<div class="row">
+ 			 <div class="col-12 col-lg-4" th:each="doctor:${dr}"> 				
+           			<div class="doctor">
+                   		<img th:src="${doctor.image}" class="center"> 
+                     <h3 th:text="${doctor.name}"> </h3>
+                      <p class="speciality" th:text="${doctor.qualification}" ></p>
+                      
+                 	<div class="col-md-10 mx-auto">
+                       <a th:href="@{/docPf(id=${doctor.id})}" target="_blank"  class="btn btn-primary btn-block my-3"><i class="far fa-user-circle mr-2"></i>VIEW PROFILE</a>
+                   </div>   
+                   <div class="col-md-10 mx-auto">  
+                   <a target="_blank" class= "btn btn-primary btn-block my-3"><i class="far fa-calendar-check mr-2"></i>BOOK APPOINTMENT</a>
+                </div>
+                </div>
+		</div>
+		</div>
+		</div>
+	</div>
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
