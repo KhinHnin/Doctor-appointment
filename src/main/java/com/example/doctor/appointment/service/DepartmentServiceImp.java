@@ -33,5 +33,4 @@ public class DepartmentServiceImp implements DepartmentService{
 		return departmentRepository.getOne(id);
 	}
 
-	
 }

@@ -38,15 +38,18 @@ public class DoctorServiceImp implements DoctorService{
 	}
 
 	@Override
+	@Transactional
 	public void deleteDoctor(Integer doc_id) {
 		doctorRepository.deleteById(doc_id);
 		
 	}
 
 	@Override
+	@Transactional
 	public List<Doctor> getDoctorsByDepartment(Department department) {
 		
 		return doctorRepository.findAllByDepartment(department);
 
 }
+
 }

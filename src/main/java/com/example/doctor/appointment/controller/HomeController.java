@@ -1,8 +1,7 @@
 package com.example.doctor.appointment.controller;
 
-import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale.Category;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,9 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.doctor.appointment.entity.AppointmentDetail;
 import com.example.doctor.appointment.entity.Department;
 import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.entity.Schedule;
+import com.example.doctor.appointment.service.AppointmentDetailService;
 import com.example.doctor.appointment.service.DepartmentService;
 import com.example.doctor.appointment.service.DoctorService;
 import com.example.doctor.appointment.service.ScheduleService;
@@ -31,7 +32,8 @@ public class HomeController {
 	@Autowired
 	private DepartmentService departmentService;
 	
-	
+	@Autowired
+	private AppointmentDetailService appointmentDetailService;
 	
 	@GetMapping("/")
 	public String showHome() {
@@ -40,16 +42,29 @@ public class HomeController {
 	
 	@GetMapping("/docPf")
 	public String showSchedules(@RequestParam("id")Integer id,Model model) {
-		List<Schedule> Schedules=scheduleService.getSchedules();
 		Doctor doctors=doctorService.getDoctor(id);
 		model.addAttribute("doctor",doctors);
-		model.addAttribute("schedules",Schedules);
+		
+		//AppointmentCount Detail
+		List<Schedule> Schedulelist=new ArrayList<Schedule>();
+		List<Schedule> ScheduleList=scheduleService.getSchedules();
+		for(Schedule schedule:ScheduleList) {
+			List<AppointmentDetail> Appointments=appointmentDetailService.getAppointmentsBySchedule(schedule);
+			if(Appointments.size()<3) {
+				Schedulelist.add(schedule);
+			}
+		}
+		model.addAttribute("schedules",Schedulelist);
+		///
+		
 		return "doctor_profile";
 	}
 	
 
 	@GetMapping("/findDoctor")
 	public String showDoctors(HttpServletRequest request,Model model) {
+		List<Schedule> Schedules=scheduleService.getSchedules();
+		model.addAttribute("schedules",Schedules);
 		List<Department> departmentList=departmentService.getDepartments();
 		model.addAttribute("departments",departmentList);
 		String dpStr=request.getParameter("dp");
@@ -66,7 +81,5 @@ public class HomeController {
 		
 		return "finding_doctor";
 	}
-	
-	
 	
 }

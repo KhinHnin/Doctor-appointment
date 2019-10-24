@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.entity.Schedule;
 import com.example.doctor.appointment.repository.ScheduleRepository;
 
@@ -37,6 +38,12 @@ public class ScheduleServiceImp implements ScheduleService{
 	@Override
 	public void deleteScheduleById(Integer sche_id) {
 		scheduleRepository.deleteById(sche_id);
+	}
+
+	@Override
+	public List<Schedule> getSchedulesByDoctor(Doctor doc) {
+		// TODO Auto-generated method stub
+		return scheduleRepository.getScheduleByDoctor(doc);
 	}
 		
 }
