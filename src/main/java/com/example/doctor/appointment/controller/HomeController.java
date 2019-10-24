@@ -1,5 +1,4 @@
 package com.example.doctor.appointment.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,19 +66,32 @@ public class HomeController {
 		model.addAttribute("schedules",Schedules);
 		List<Department> departmentList=departmentService.getDepartments();
 		model.addAttribute("departments",departmentList);
+		List<Doctor> doctorList=doctorService.getDoctors();
+		model.addAttribute("dList",doctorList);
+		
 		String dpStr=request.getParameter("dp");
-		if(dpStr==null) {
+		String docStr=request.getParameter("doc");
+		
+		if((dpStr==null)&(docStr==null)) {
 
-			List<Doctor> doctors=doctorService.getDoctors();
-		model.addAttribute("doc",doctors);
-		}else {
+		List<Doctor> doctors=doctorService.getDoctors();
+		model.addAttribute("dr",doctors);
+		}else if(dpStr!=null){
+		
 			Integer dpId=Integer.parseInt(dpStr);
 			Department department=departmentService.getDepartment(dpId);
             List<Doctor> doctors=doctorService.getDoctorsByDepartment(department);
-			model.addAttribute("d",doctors);
-		}
+			model.addAttribute("dr",doctors);
+		
+			
+		}else {
+		Integer docId=Integer.parseInt(docStr);
+		Doctor doctor=doctorService.getDoctor(docId);
+		
+		model.addAttribute("dr",doctor);
+	}
 		
 		return "finding_doctor";
+
 	}
-	
 }

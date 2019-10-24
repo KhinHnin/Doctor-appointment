@@ -1,6 +1,7 @@
 package com.example.doctor.appointment.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -32,7 +33,13 @@ public class ScheduleServiceImp implements ScheduleService{
 
 	@Override
 	public Schedule getSchedule(Integer schedule_id) {
-		return scheduleRepository.getOne(schedule_id);
+		Optional<Schedule> optional=scheduleRepository.findById(schedule_id);
+		if(optional.isPresent()) {
+			return optional.get();
+		}else {
+			throw new RuntimeException("Schedule not found");
+		}
+	
 	}
 
 	@Override

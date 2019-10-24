@@ -1,0 +1,54 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;
+	font-family:sans-serif; 
+} 
+body{ 
+	background:#f3f5f9;
+}
+
+img{
+	
+	padding:10px;
+	padding-top:40px;
+	border-radius:50%;
+	width:250px;
+	height:250px;
+	object-fit:auto;
+	object-position:100%;
+	}
+
+	
+	
+.container .doctorPF {
+	text-aling:center;
+	background:#004d99;
+	
+}
+
+.container .doctorPF .center{
+	text-aling:center;
+	background:#004d99;
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+	width:50%;
+}
+
+.container .doctor .doctor_action{
+	background:#fff;
+}
+.container .doctor .doctor_action i{
+	margin-top:20px;
+	padding:20px;
+	font-size:50px;
+	background:grey;
+	color:#fff;
+	border-radius:50%;
+} 
+
+
+
+
