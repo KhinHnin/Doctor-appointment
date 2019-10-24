@@ -8,4 +8,5 @@ import com.example.doctor.appointment.entity.Department;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department,Integer> {
 
+	
 }

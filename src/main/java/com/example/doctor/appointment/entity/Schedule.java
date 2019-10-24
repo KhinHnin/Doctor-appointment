@@ -24,6 +24,29 @@ public class Schedule {
 	@ManyToOne
 	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;
+	
+	@OneToMany(mappedBy = "schedule")
+	private List<AppointmentDetail> appointmentDetails;
+
+	public List<AppointmentDetail> getAppointmentDetails() {
+		return appointmentDetails;
+	}
+
+	public void setAppointmentDetails(List<AppointmentDetail> appointmentDetails) {
+		this.appointmentDetails = appointmentDetails;
+	}
+
+	public Schedule(int id, Doctor doctor, List<AppointmentDetail> appointmentDetails, String day, String fromTime,
+			String toTime, Date date) {
+		super();
+		this.id = id;
+		this.doctor = doctor;
+		this.appointmentDetails = appointmentDetails;
+		this.day = day;
+		this.fromTime = fromTime;
+		this.toTime = toTime;
+		this.date = date;
+	}
 
 	@Column(name = "day")
 	private String day;
