@@ -39,7 +39,7 @@
 
 							<h4 class="h5" th:text="${doctor.name}"></h4>
 								
-							<button>Book</button>
+							<button><a th:href="@{/appointment(id=${doctor.id})}">Book</a></button>
 							<button><a th:href="@{/docPf(id=${doctor.id})}">Profile</a></button>
 						</div>
 							
