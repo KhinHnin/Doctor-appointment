@@ -10,11 +10,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.doctor.appointment.entity.AppointmentDetail;
 import com.example.doctor.appointment.entity.Department;
@@ -84,7 +86,7 @@ public class BookAppointmentController {
 	}
 	
 	@GetMapping("/makeAppointment")
-	public String showPatienDetail(@RequestParam("doctorId")Integer doct_id,@RequestParam("departmentId")Integer depart_id,@RequestParam("date")Date appointment_date,Model model) {
+	public String showPatienDetail(@RequestParam("doctorId")Integer doct_id,@RequestParam("date")Date appointment_date,Model model) {
 		
 		Doctor Doc=doctorService.getDoctor(doct_id);
 		model.addAttribute("doc",Doc);
@@ -109,19 +111,27 @@ public class BookAppointmentController {
 		System.out.println(appointmentDate);	
 		
 		////
-		return "Book Appointment/patient_Detail.html";
+		return "Book Appointment/patient_Detail";
 	}
 	
 	@PostMapping("/DoctorAppointment")
-	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,Errors errors,Model model) {
-		
-		if(errors.hasErrors()) {
-			model.addAttribute("title","add appointment");
-			return "Book Appointment/patient_Detail.html";
-		}
-		
+	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,BindingResult result,RedirectAttributes redirAttr,Model model) {
 		Schedule schedule=scheduleService.getSchedule(id);
 		appointment.setSchedule(schedule);
+		Doctor doc=schedule.getDoctor();
+		int doc_id=doc.getId();
+	    Date date=schedule.getDate();
+
+		if(result.hasErrors()) {
+			redirAttr.addAttribute("doctorId",doc_id);
+			redirAttr.addAttribute("date",date);
+			List<ObjectError> errors=result.getAllErrors();
+			redirAttr.addFlashAttribute("errors",errors);
+			return "redirect:/makeAppointment";
+			
+		}
+		
+		
 		appointmentDetailService.saveAppointment(appointment);
 		return "redirect:";
 	}
