@@ -9,7 +9,7 @@
 		<div class="form-group">
 			<label>Schedules for <span th:text="${appointment_Date}"></span>:</label>
 			    <select  class="form-control" name="scheduleId">
-			    <option th:each="schedule:${schedules}" th:if="${schedule.doctor.id==doc.id and schedule.date==appointment_Date}" th:text="${schedule.fromTime}+'-'+${schedule.toTime}" th:value="${schedule.id}"></option>
+			    <option th:each="schedule:${schedules}" th:text="${schedule.fromTime}+'-'+${schedule.toTime}" th:value="${schedule.id}"></option>
 			    </select>
 		</div>
 		

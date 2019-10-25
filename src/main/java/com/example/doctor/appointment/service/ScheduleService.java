@@ -1,5 +1,6 @@
 package com.example.doctor.appointment.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.example.doctor.appointment.entity.Doctor;
@@ -15,4 +16,6 @@ public interface ScheduleService {
 	public void deleteScheduleById(Integer sche_id);
 
 	public List<Schedule> getSchedulesByDoctor(Doctor doc);
+
+	public List<Schedule> getSchedulesByDr_Date(Integer doct_id, Date appointment_date);
 }

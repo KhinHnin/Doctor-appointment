@@ -32,7 +32,7 @@ table{
                    <i class="fas fa-phone-volume ml-5 mr-5"></i>
                    <i class="fas fa-calendar-alt ml-5 mr-4"></i><br> 
                    <a href="tel:+9509969890955" class="ml-4 mr-4">Call for appointment</a>
-                   <a href="/en/book-appointment?doctorid=078923" class="ml-4 mr-4">Book Appointment</a>
+                   <a th:href="@{/DoctorAppointment(id=${doctor.id})}" class="ml-4 mr-4">Book Appointment</a>
                 </div>
            
             </div>
