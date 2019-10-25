@@ -1,6 +1,7 @@
 package com.example.doctor.appointment.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +24,29 @@ public class Schedule {
 	@ManyToOne
 	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;
+	
+	@OneToMany(mappedBy = "schedule")
+	private List<AppointmentDetail> appointmentDetails;
+
+	public List<AppointmentDetail> getAppointmentDetails() {
+		return appointmentDetails;
+	}
+
+	public void setAppointmentDetails(List<AppointmentDetail> appointmentDetails) {
+		this.appointmentDetails = appointmentDetails;
+	}
+
+	public Schedule(int id, Doctor doctor, List<AppointmentDetail> appointmentDetails, String day, String fromTime,
+			String toTime, Date date) {
+		super();
+		this.id = id;
+		this.doctor = doctor;
+		this.appointmentDetails = appointmentDetails;
+		this.day = day;
+		this.fromTime = fromTime;
+		this.toTime = toTime;
+		this.date = date;
+	}
 
 	@Column(name = "day")
 	private String day;

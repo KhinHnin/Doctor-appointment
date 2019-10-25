@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/DoctorAppointment}" method="POST" th:object="${appointment}">
+		<div class="form-group">
+			<label>Schedules for <span th:text="${appointment_Date}"></span>:</label>
+			    <select  class="form-control" name="scheduleId">
+			    <option th:each="schedule:${schedules}" th:text="${schedule.fromTime}+'-'+${schedule.toTime}" th:value="${schedule.id}"></option>
+			    </select>
+		</div>
+		
+		<div class="form-group">
+			<label>Name:</label> <input type="text" class="form-control" th:field="*{patient_name}"> 
+			<span th:errors="*{patient_name}" class="error"></span>
+		</div>
+
+		<div class="form-group">
+			<label>Gender:</label> <input type="radio" name="gender"
+				th:text="Male" th:value="Male" th:field="*{gender}"> <input
+				type="radio" name="gender" th:text="Female" th:value="Female"
+				th:field="*{gender}">
+				<span th:errors="*{gender}" class="error"></span>
+		</div>
+
+		<div class="form-group">
+			<label>Age:</label> <input type="text" th:field="*{age}" class="form-control"> 
+			<span th:errors="*{age}" class="error"></span>
+		</div>
+
+		<div class="form-group">
+			<label>Phone Number:</label> <input type="tel" class="form-control"
+				th:field="*{phone_no}"> <span th:errors="*{phone_no}"
+				class="error"></span>
+		</div>
+		<input type="submit" value="Submit" class="btn btn-primary btn-block">
+	</form>
+</body>
+</html>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.doctor.appointment.entity.Department;
-import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.service.DepartmentService;
 
 @Controller

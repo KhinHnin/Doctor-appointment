@@ -1,5 +1,6 @@
 package com.example.doctor.appointment.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.doctor.appointment.entity.Doctor;
 import com.example.doctor.appointment.entity.Schedule;
 import com.example.doctor.appointment.repository.ScheduleRepository;
 
@@ -44,6 +46,17 @@ public class ScheduleServiceImp implements ScheduleService{
 	@Override
 	public void deleteScheduleById(Integer sche_id) {
 		scheduleRepository.deleteById(sche_id);
+	}
+
+	@Override
+	public List<Schedule> getSchedulesByDoctor(Doctor doc) {
+		return scheduleRepository.getScheduleByDoctor(doc);
+	}
+
+	@Override
+	public List<Schedule> getSchedulesByDr_Date(Integer doct_id, Date appointment_date) {
+		
+		return scheduleRepository.getSchedulesByDr_Date(doct_id,appointment_date);
 	}
 		
 }
