@@ -1,7 +1,6 @@
 package com.example.doctor.appointment.controller;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +9,12 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.doctor.appointment.entity.AppointmentDetail;
 import com.example.doctor.appointment.entity.Department;
@@ -40,36 +40,6 @@ public class BookAppointmentController {
 	@Autowired
 	private AppointmentDetailService appointmentDetailService;
 	
-	List<Schedule> scheduleList=new ArrayList<Schedule>();
-	/*@GetMapping
-	public String bookAppointment(@RequestParam("id")Integer doct_id, Model model) {
-	
-		List<Doctor> doctorList=doctorService.getDoctors();
-		model.addAttribute("doctors",doctorList);
-		List<Department> departmentList=departmentService.getDepartments();
-		model.addAttribute("departments",departmentList);
-		Doctor Doc=doctorService.getDoctor(doct_id);
-		model.addAttribute("doc",Doc);
-		
-		//AppointmentCount Validation
-		List<Schedule> scheduleList=scheduleService.getSchedules();
-		/*for(Schedule schedule:scheduleList) {
-			List<AppointmentDetail> Appointments=appointmentDetailService.getAppointmentsBySchedule(schedule);
-			if(Appointments.size()<3) {
-				schedulelist.add(schedule);
-			}
-		}
-		if(schedulelist.size()==0) {
-			System.out.println(schedulelist.size());
-			return "schedule_empty";
-		}else {
-			model.addAttribute("schedules",scheduleList);
-		//////
-		
-		model.addAttribute("appointment",new AppointmentDetail());
-		return "Book Appointment/appointment_detail";
-	}*/
-	
 	@GetMapping("/DoctorAppointment")
 	public String showAppointmentDetail(@RequestParam("id")Integer doct_id, Model model) {
 		
@@ -84,45 +54,63 @@ public class BookAppointmentController {
 	}
 	
 	@GetMapping("/makeAppointment")
-	public String showPatienDetail(@RequestParam("doctorId")Integer doct_id,@RequestParam("departmentId")Integer depart_id,@RequestParam("date")Date appointment_date,Model model) {
+	public String showPatienDetail(@RequestParam("doctorId")Integer doct_id,@RequestParam("date")Date appointment_date,Model model) {
 		
-		Doctor Doc=doctorService.getDoctor(doct_id);
-		model.addAttribute("doc",Doc);
-		List<Schedule> schedulelist=scheduleService.getSchedulesByDoctor(Doc);
+		List<Schedule> schedulelist=scheduleService.getSchedulesByDr_Date(doct_id,appointment_date);
+		List<Schedule> scheduleList=new ArrayList<Schedule>();
 		
 		for(Schedule schedule:schedulelist) {
-			List<AppointmentDetail> Appointments=appointmentDetailService.getAppointmentsBySchedule(schedule);
+			List<AppointmentDetail> Appointments=schedule.getAppointmentDetails();
 			int appointmentCount=Appointments.size();
 			if(appointmentCount<3) {
-				
 				scheduleList.add(schedule);
 			}
+			
 		}
 		model.addAttribute("schedules",scheduleList);
 		
 		//To filter schedules
-		SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
+		/*SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
 		String appointmentDate=simpleDateformat.format(appointment_date);
 		model.addAttribute("appoint_Date",appointmentDate);
 		model.addAttribute("appointment_Date",appointment_date);
+		System.out.println(appointmentDate);*/	
 		model.addAttribute("appointment",new AppointmentDetail());
-		System.out.println(appointmentDate);	
-		
 		////
-		return "Book Appointment/patient_Detail.html";
+		return "Book Appointment/patient_Detail";
 	}
 	
 	@PostMapping("/DoctorAppointment")
-	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,Errors errors,Model model) {
-		
-		if(errors.hasErrors()) {
-			model.addAttribute("title","add appointment");
-			return "Book Appointment/patient_Detail.html";
-		}
-		
+	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,BindingResult binding,RedirectAttributes redirectAttributes) {
 		Schedule schedule=scheduleService.getSchedule(id);
 		appointment.setSchedule(schedule);
+		Doctor doctor=schedule.getDoctor();
+		int doct_id=doctor.getId();
+		Date date=schedule.getDate();
+		
+		if(binding.hasErrors()) {
+			redirectAttributes.addAttribute("doctorId", doct_id);
+			redirectAttributes.addAttribute("date", date);
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointment", binding);
+			return "redirect:/makeAppointment";
+		}
+		
+		String ph_no=appointment.getPhone_no();
+		StringBuilder builder = new StringBuilder(ph_no); 
+		builder.deleteCharAt(0);
+		appointment.setPhone_no("+95"+builder);
+	
 		appointmentDetailService.saveAppointment(appointment);
-		return "redirect:";
+		
+		redirectAttributes.addAttribute("appointmentId", appointment.getId());
+		return "redirect:/DoctorAppointment/Confirmation";
 	}
+	
+	@GetMapping("DoctorAppointment/Confirmation")
+	public String showConfirmationPage(@RequestParam("appointmentId")Integer id,Model model) {
+		AppointmentDetail Appointment=appointmentDetailService.getAppointmentById(id);
+		model.addAttribute("appointment",Appointment);
+		return "Book Appointment/confirmation";
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.example.doctor.appointment.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,8 +50,13 @@ public class ScheduleServiceImp implements ScheduleService{
 
 	@Override
 	public List<Schedule> getSchedulesByDoctor(Doctor doc) {
-		// TODO Auto-generated method stub
 		return scheduleRepository.getScheduleByDoctor(doc);
+	}
+
+	@Override
+	public List<Schedule> getSchedulesByDr_Date(Integer doct_id, Date appointment_date) {
+		
+		return scheduleRepository.getSchedulesByDr_Date(doct_id,appointment_date);
 	}
 		
 }

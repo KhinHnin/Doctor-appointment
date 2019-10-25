@@ -12,4 +12,6 @@ public interface AppointmentDetailService {
 	List<AppointmentDetail> getAppointmentsBySchedule(Schedule schedule);
 
 	List<AppointmentDetail> getAppointments();
+
+	AppointmentDetail getAppointmentById(Integer id);
 }

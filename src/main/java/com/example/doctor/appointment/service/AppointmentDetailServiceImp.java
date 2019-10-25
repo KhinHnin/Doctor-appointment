@@ -35,5 +35,11 @@ public class AppointmentDetailServiceImp implements AppointmentDetailService {
 		return appointmentDetailRepository.findAll();
 	}
 
+	@Override
+	public AppointmentDetail getAppointmentById(Integer id) {
+		
+		return appointmentDetailRepository.getOne(id);
+	}
+
 
 }
