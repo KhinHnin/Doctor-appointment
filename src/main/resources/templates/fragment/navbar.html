@@ -29,7 +29,7 @@
                <div class="menu">
                   <ul>
                      <li><a th:href="@{/}">Home</a></li>
-                     <li><a th:href="@{/}">Find Doctors</a></li>
+                     <li><a th:href="@{/findDoctor}">Find Doctors</a></li>
                      <li><a th:href="@{/departments}">Departments</a></li>
                      <li><a th:href="@{/contactus}">Contact</a></li>
                   </ul>
@@ -37,18 +37,14 @@
             </nav>
             
          </header>
+         <div>
                      <img class="bg" th:src="@{images/hospital1.jpg}"/>
-                    <div class="box">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      <div class="content">
-          <a th:href="@{/}">Make an Appointment With Our Doctors!</a>
-        </div>
-        <div>	
-        </div>
-      </div>
+               <div class="svg-wrapper my-auto ">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <rect class="shape"/>
+    <div class="text"><a class="app" href=#>Make Appointments</a></div>
+  </svg>
+</div>
       </div>
    </body>
 </html>

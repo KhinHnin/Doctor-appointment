@@ -1,23 +1,13 @@
 @charset "ISO-8859-1";
-body{ 
-	background:#f3f5f9;
-	}
-.container{
+
+.doc-sr-box{
 	background:#004d99;
 }
-.container .dropdown-menu{
+.doc-sr-box .dropdown-menu{
 	padding:0; 
 	 margin:0; 
 }
 
-.maincontent img{
-	padding:10px ;
- 	width: 160px;
-	 height: 160px; 
-	  border-radius: 50%;
-	object-fit: cover;   
-	  object-position: 100% ;  
-}
 .maincontent .doctor .center{
 	  display: block;
   margin-left: auto;
@@ -35,13 +25,11 @@ body{
 }
 .maincontent .doctor{
 	margin:20px;
-	padding:20px ;background:#fff;
+	padding:20px ;
+	background:#fff;
 	box-shadow:2px 3px 10px 0px; 
 		
 }
 .maincontent h3{
 	color:#004d99;
-	font-family: 'Montserrat', sans-serif; 
-
-
 }

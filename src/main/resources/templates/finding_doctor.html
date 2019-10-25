@@ -12,78 +12,139 @@
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/findDoc.css/}" type="text/css">
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
+
 <style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+	background-color: #ECF1EF;
+}
+
+h1 {
+	color: #ffa500;
+	font-weight: bold;
+	text-align: center;
+}
+	
 </style>
+<link rel="stylesheet" th:href="@{/css/material-scrolltop.css}">
 </head>
 <body>
-	<div class="container">
-    <div class="col-12 bg-gray my-5 py-5 px-3 px-lg-5">
-       	 <div class="row">
-           	<div class="col-12 col-md-6 col-lg flex-grow-1">
-                <label class="text-light">Search by specialty</label>
-             <div class="dropdown">
-              <div class="btn-group">
-  				 <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  		 		--- Please select Specility---
- 				 </button>
- 		  <div class="dropdown-menu">
- 		   <div class="list-group">
- 		  <a th:href="@{/findDoctor(dp=${department.id})}" class="list-group-item list-group-item-action list-group-item-dark"
-		 	  th:each="department:${departments}" th:text="${department.name}"></a>
-		  </div>
-  		</div>	
-  		</div>
-       </div>
-       </div>
-		<div class="col-12 col-lg flex-grow-1">
-		  <label  class="text-light">Search by doctor&#39;s name or surname</label>
-		   <div class="dropdown">
-		 	<div class="btn-group">
-  			 <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  		 		--- Please select Doctor name ---
- 			 </button>
- 		  <div class="dropdown-menu">
- 		    <div class="list-group">
- 		   <a th:href="@{/findDoctor(doc=${doctor.id})}"  class="list-group-item list-group-item-action list-group-item-dark"
-	  th:each="doctor:${dList}" th:text="${doctor.name}"></a>
-  		</div>	
-		</div>
-  			
-  			<div class="col-12 col-lg flex-grow-1">
-  			<div class="ml-5 col-lg-2">
-  			<a th:href="@{/findDoctor}" class="btn btn-light ">Find All Doctor</a>
-  			</div></div>
-  		</div>
-  		</div>
-  		</div>
-  		
-  </div>
-  </div> 
-  </div> 
-  
-    <!--  Doctor images -->
-    <div class=maincontent>
-		<div class="col-12 bg-gray my-3  py-5 px-3 px-lg-5">
-    		<div class="row">
- 			 <div class="col-12 col-lg-4" th:each="doctor:${dr}"> 				
-           			<div class="doctor">
-                   		<img th:src="${doctor.image}" class="center"> 
-                     <h3 th:text="${doctor.name}"> </h3>
-                      <p class="speciality" th:text="${doctor.qualification}" ></p>
-                      
-                 	<div class="col-md-10 mx-auto">
-                       <a th:href="@{/docPf(id=${doctor.id})}" target="_blank"  class="btn btn-primary btn-block my-3"><i class="far fa-user-circle mr-2"></i>VIEW PROFILE</a>
-                   </div>   
-                   <div class="col-md-10 mx-auto">  
-                   <a target="_blank" class= "btn btn-primary btn-block my-3"><i class="far fa-calendar-check mr-2"></i>BOOK APPOINTMENT</a>
-                </div>
-                </div>
-		</div>
-		</div>
+	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
+
+	<div class="row justify-content-center mt-1">
+		<div class="col-lg-3">
+			<div class="main_title">
+				<h1>Our Doctors</h1>
+			</div>
 		</div>
 	</div>
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+
+	<!-- Find Doctors Box -->
+	<div
+		class="container rounded col-lg-11 col-md-6 col-sm-4 mx-auto mt-5 doc-sr-box">
+		<div class="row">
+
+			<!-- Search by Dept -->
+			<div class=" mx-5 my-5 ">
+				<label class="text-light">Search by specialty</label>
+				<div class="dropdown">
+					<div class="btn-group">
+						<button class="btn btn-light btn-lg dropdown-toggle text-muted"
+							type="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">--- Please select Specility---</button>
+						<div class="dropdown-menu">
+							<a th:href="@{/findDoctor(dp=${department.id})}"
+								class="list-group-item list-group-item-action list-group-item-dark"
+								th:each="department:${departments}" th:text="${department.name}"></a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Search by Dept -->
+			<div class="mx-5 my-5 ">
+				<label class="text-light">Search by doctor&apos;s name</label>
+				<div class="dropdown">
+					<div class="btn-group">
+						<button class="btn btn-light btn-lg dropdown-toggle text-muted"
+							type="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">--- Please select Doctor&apos;s
+							name ---</button>
+						<div class="dropdown-menu">
+							<div class="list-group">
+								<a th:href="@{/findDoctor(doc=${doctor.id})}"
+									class="list-group-item list-group-item-action list-group-item-dark"
+									th:each="doctor:${dList}" th:text="${doctor.name}"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Find All -->
+			<div class="mx-5 my-5 ">
+				<div class="py-2 my-4">
+					<a th:href="@{/findDoctor}" class="btn btn-light py-2"
+						style="font-size: 18px">Find All Doctors</a>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<!--  Doctor images -->
+	<div class=maincontent>
+		<div class="col-12 bg-gray my-3  py-5 px-3 px-lg-5">
+			<div class="row">
+				<div class="col-12 col-lg-4" th:each="doctor:${dr}">
+					<div class="doctor rounded">
+					<img th:src="${doctor.image}" width="100" height="100" class=" rounded-circle z-depth-2"  data-holder-rendered="true">
+						<h3 th:text="${doctor.name}"></h3>
+						<p class="speciality" th:text="${doctor.qualification}"></p>
+
+						<div class="col-md-10 mx-auto">
+							<a th:href="@{/docPf(id=${doctor.id})}" target="_blank"
+								class="btn btn-primary btn-block my-3"><i
+								class="far fa-user-circle mr-2"></i>VIEW PROFILE</a>
+						</div>
+						<div class="col-md-10 mx-auto">
+							<a target="_blank" class="btn btn-primary btn-block my-3"><i
+								class="far fa-calendar-check mr-2"></i>BOOK APPOINTMENT</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Find Doctors Card End -->
+	<!-- scroll-top -->
+	<a href="#" id="scroll" style="display: none;"><span></span></a>
+	<!-- Footer -->
+	<div th:replace="fragment/footer :: app-footer"></div>
+	<!-- Footer -->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script
@@ -94,6 +155,10 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-     
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script th:src="@{js/material-scrolltop.js}"></script>
+
 </body>
 </html>

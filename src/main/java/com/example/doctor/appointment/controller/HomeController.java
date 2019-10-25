@@ -1,12 +1,11 @@
 package com.example.doctor.appointment.controller;
-<<<<<<< HEAD
+
 
 import java.util.List;
-=======
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
->>>>>>> 4a5fa801f04467541ad7d488bfa510d52fced78b
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,14 +41,14 @@ public class HomeController {
 		return "doctor_profile";
 	}
 	
-<<<<<<< HEAD
 	@GetMapping("/departments")
 	public String showDepartments(Model model) {
 		
 		List<Department> department=departmentService.getDepartments();
 		model.addAttribute("departments",department);
 		return "view_departments";
-=======
+	}
+
 
 	@GetMapping("/findDoctor")
 	public String showDoctors(HttpServletRequest request,Model model) {
@@ -78,9 +77,11 @@ public class HomeController {
 		Doctor doctor=doctorService.getDoctor(docId);
 		
 		model.addAttribute("dr",doctor);
->>>>>>> 4a5fa801f04467541ad7d488bfa510d52fced78b
-	}
+	
 		
+		}
+		return "finding_doctor";
+	}
 		
 //		if((dpStr==null)&(docStr==null)) {
 //			List<Doctor> doctors=doctorService.getDoctors();
@@ -95,16 +96,11 @@ public class HomeController {
 //		}
 		
 		
-		return "finding_doctor";
+		
 	
-<<<<<<< HEAD
 	@GetMapping("/")
 	public String showHome() {
 		return "home";
-=======
-	
-
->>>>>>> 4a5fa801f04467541ad7d488bfa510d52fced78b
 	}
-	
 }
+	

@@ -5,8 +5,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,6 +30,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <style type="text/css">
 
 body {
@@ -132,6 +131,7 @@ hr.style-four{
       <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <link rel="stylesheet" th:href="@{/css/nav.css}">
  <script th:src="@{/js/nav.js}"></script>
+ <link rel="stylesheet" th:href="@{/css/material-scrolltop.css}">
 </head>
 
 <body>
@@ -139,7 +139,7 @@ hr.style-four{
 	<div th:replace="fragment/navbar :: app-navbar"> <p class="content">Hello World!</p></div>
 
 	<!-- service -->
-	<div class="container mt-5 text-center">
+	<div class="container mt-1 text-center">
 		<div class="row justify-content-center">
 			<div class="col-lg-3">
 				<div class="main_title">
@@ -337,7 +337,8 @@ hr.style-four{
 	<!-- doctor-end -->
 
 <hr class="style-four" />
-
+<!-- scroll-top -->
+<a href="#" id="scroll" style="display: none;"><span></span></a>
 	<!-- Footer -->
 	<div th:replace="fragment/footer :: app-footer"></div>
 
@@ -357,9 +358,9 @@ hr.style-four{
 
 	<!-- service JavaScript -->
 	<script src="//code.jquery.com/jquery.js"></script>
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script th:src="@{js/material-scrolltop.js}"></script>
+	
 
 </body>
 </html>
