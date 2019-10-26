@@ -18,26 +18,23 @@
 <body>
 	<div class="col-md-8 col-lg-9">
 		<div class="row">
-			<div class="col-md-6 mx-auto">
+			<div class="col-md-6">
 				<h1 class="h3">Doctor Appointment</h1>
 				<form th:action="@{/makeAppointment}" method="GET">
 
 					<div class="form-group">
-						<label>Doctor Name:</label> <select class="form-control"
-							name="doctorId">
-							<option th:each="doctor:${doctors}" th:value="${doctor.id}"
-								th:selected="${doctor.id==doc.id}" th:text="${doctor.name}"></option>
-						</select>
-
+						<label>Doctor Name:</label> 
+                         <select class="form-control" name="doctorId">
+                         
+                         <option th:each="doctor:${doctors}" th:value="${doctor.id}"
+                         th:selected="${doctor.id==doc.id}" th:text=${doctor.name}></option>
+                         </select>
 					</div>
+					
 
 					<div class="form-group">
-						<label>Department Name:</label> <select class="form-control"
-							name="departmentId">
-							<option th:each="department:${departments}"
-								th:text="${department.name}" th:value="${department.id}"
-								th:selected="${department.id==doc.department.id}"></option>
-						</select>
+						<label>Department Name:</label>
+						<input type="text" th:value="${doc.department.name}">
 					</div>
 
 					<div class="form-group">
@@ -49,6 +46,36 @@
 						class="btn btn-primary btn-block">
 				</form>
 			</div>
+			<div class="col-md-6">
+			<img class="card-img-center center"  th:src="${doc.image}" alt="">
+			<table class="table">
+			
+					<tr><th><h1 th:text="${doc.name}"></h1></th></tr>
+			      	<tr>
+			      		<td><h2>Qualification</h2><p class="lead" th:text="${doc.qualification}"></p></td>
+			      	</tr>
+			     	<tr><td><h2>Speciality</h2><p th:text=" ${doc.department.name}"></p></td></tr>
+			      	<tr><td>
+			      	<div class="dropdown">
+			      	<button class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" style="size:70px">Schedule</button>
+			      <div class="dropdown-menu mt-3">
+			      <table class="table mt-2 dropdown-item mx-auto">
+			      <tr>
+			        <th>Day</th>
+			        <th>Time</th>
+			        <th>Date</th>
+                   </tr>
+			      <tr th:each="sh:${schedules}">
+			      <td th:if="${sh.doctor.id == doc.id}" th:text="${sh.day}"></td>
+			      <td th:if="${sh.doctor.id == doc.id}" th:text="${sh.fromTime}+'-'+${sh.toTime}"></td>
+			      <td th:if="${sh.doctor.id == doc.id}" th:text="${sh.date}"></td>
+			      </tr>
+			      </table>
+			      </div>
+			      </div>
+			     </table>
+			</div>
+			
 		</div>
 	</div>
 

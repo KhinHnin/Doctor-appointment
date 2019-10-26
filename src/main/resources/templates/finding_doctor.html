@@ -21,19 +21,7 @@
 <body>
 	
 
-				<div class="col-lg-3 col-md-4 mb-4" th:each="doctor:${d}">
-				<div class="h-100">
-							<a ><img class="card-img-top " th:src="${doctor.image}" alt=""></a>
-							<h4 class="h5" th:text="${doctor.name}"></h4>
-								
-
-							
-
-							<button><a  th:href="@{/DoctorAppointment(id=${doctor.id})}">Book</button>
-
-							<button><a th:href="@{/docPf(id=${doctor.id})}">Profile</a></button>
-				</div>
-			</div>				
+						
 
 	<div class="container">
 		<div class="col-12 bg-gray my-5 py-5 px-3 px-lg-5">
@@ -47,7 +35,9 @@
 								aria-expanded="false">--- Please select Specility---</button>
 							<div class="dropdown-menu">
 								<div class="list-group">
-									<a th:href="@{/findDoctor(dp=${department.id})}" class="list-group-item list-group-item-action list-group-item-dark" th:each="department:${departments}" th:text="${department.name}"></a>
+									<a th:href="@{/findDoctor(dp=${department.id})}" 
+									class="list-group-item list-group-item-action list-group-item-dark"
+									 th:each="department:${departments}" th:text="${department.name}"></a>
 								</div>
 							</div>
 						</div>

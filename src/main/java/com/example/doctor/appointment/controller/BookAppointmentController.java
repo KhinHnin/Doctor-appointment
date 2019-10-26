@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,6 +28,7 @@ import com.example.doctor.appointment.service.DoctorService;
 import com.example.doctor.appointment.service.ScheduleService;
 
 @Controller
+
 public class BookAppointmentController {
 	
 	@Autowired
@@ -50,6 +52,8 @@ public class BookAppointmentController {
 		model.addAttribute("departments",departmentList);
 		Doctor Doc=doctorService.getDoctor(doct_id);
 		model.addAttribute("doc",Doc);
+		List<Schedule> scheduleList=scheduleService.getSchedules();
+		model.addAttribute("schedules", scheduleList);
 		
 		return "Book Appointment/appointment_detail";
 	}
@@ -119,7 +123,7 @@ public class BookAppointmentController {
 		return "Book Appointment/confirmation";
 	}
 	
-	@GetMapping("DoctorAppointment/CancelAppointment")
+	@GetMapping("/CancelAppointment")
 	public String cancelAppointment(@RequestParam("id")Integer appointment_id,@ModelAttribute("appointment")AppointmentDetail appointment,RedirectAttributes redirectAttributes) {
 		appointmentDetailService.deleteAppointment(appointment_id);
 		//redirectAttributes.addAttribute("id",appointment.getSchedule().getDoctor().getId());
