@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.example.doctor.appointment.entity.AppointmentDetail;
 import com.example.doctor.appointment.entity.Contact;
 import com.example.doctor.appointment.repository.DepartmentRepository;
 import com.example.doctor.appointment.repository.DoctorRepository;
+import com.example.doctor.appointment.service.AppointmentDetailService;
 import com.example.doctor.appointment.service.ContactService;
 
 @Controller
@@ -27,6 +28,8 @@ public class AdminController {
 	
 	@Autowired
 	private ContactService contactService;
+	@Autowired
+	private AppointmentDetailService  appointmentDetailService;
 
 	@GetMapping
 	public String showAdmin(Model model) {
@@ -50,5 +53,20 @@ public class AdminController {
 		return "redirect:";
 	}
 	
+	@GetMapping("/appointments")
+	public String showAppointmentList(Model model) {
+		
+		List<AppointmentDetail> appointmentList=appointmentDetailService.getAppointments();
+	      model.addAttribute("appointments",appointmentList);
+	return "admin/appointments";
+	
+	
+	}
+	
+	@GetMapping("/appointments/delete")
+	public String deleteAppointment(@RequestParam("id")Integer app_id) {
+		appointmentDetailService.deleteAppointment(app_id);
+		return "redirect:";
+	}
 	
 }

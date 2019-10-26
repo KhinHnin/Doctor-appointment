@@ -1,7 +1,8 @@
 package com.example.doctor.appointment.controller;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-<<<<<<< HEAD
-import org.springframework.validation.ObjectError;
-=======
->>>>>>> 84041aafea920955b84c2c8692ec6e6332b95805
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,30 +77,15 @@ public class BookAppointmentController {
 		model.addAttribute("appointment_Date",appointment_date);
 		System.out.println(appointmentDate);*/	
 		model.addAttribute("appointment",new AppointmentDetail());
-		////
+
 		return "Book Appointment/patient_Detail";
 	}
 	
-	@PostMapping("/DoctorAppointment")
-<<<<<<< HEAD
-	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,BindingResult result,RedirectAttributes redirAttr,Model model) {
-		Schedule schedule=scheduleService.getSchedule(id);
-		appointment.setSchedule(schedule);
-		Doctor doc=schedule.getDoctor();
-		int doc_id=doc.getId();
-	    Date date=schedule.getDate();
+	
 
-		if(result.hasErrors()) {
-			redirAttr.addAttribute("doctorId",doc_id);
-			redirAttr.addAttribute("date",date);
-			List<ObjectError> errors=result.getAllErrors();
-			redirAttr.addFlashAttribute("errors",errors);
-			return "redirect:/makeAppointment";
-			
-		}
+	
 		
-		
-=======
+	@PostMapping("/DoctorAppointment")
 	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,BindingResult binding,RedirectAttributes redirectAttributes) {
 		Schedule schedule=scheduleService.getSchedule(id);
 		appointment.setSchedule(schedule);
@@ -114,7 +96,7 @@ public class BookAppointmentController {
 		if(binding.hasErrors()) {
 			redirectAttributes.addAttribute("doctorId", doct_id);
 			redirectAttributes.addAttribute("date", date);
-			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointment", binding);
+			//redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointment", binding);
 			return "redirect:/makeAppointment";
 		}
 		
@@ -123,7 +105,7 @@ public class BookAppointmentController {
 		builder.deleteCharAt(0);
 		appointment.setPhone_no("+95"+builder);
 	
->>>>>>> 84041aafea920955b84c2c8692ec6e6332b95805
+
 		appointmentDetailService.saveAppointment(appointment);
 		
 		redirectAttributes.addAttribute("appointmentId", appointment.getId());
@@ -135,6 +117,13 @@ public class BookAppointmentController {
 		AppointmentDetail Appointment=appointmentDetailService.getAppointmentById(id);
 		model.addAttribute("appointment",Appointment);
 		return "Book Appointment/confirmation";
+	}
+	
+	@GetMapping("DoctorAppointment/CancelAppointment")
+	public String cancelAppointment(@RequestParam("id")Integer appointment_id,@ModelAttribute("appointment")AppointmentDetail appointment,RedirectAttributes redirectAttributes) {
+		appointmentDetailService.deleteAppointment(appointment_id);
+		//redirectAttributes.addAttribute("id",appointment.getSchedule().getDoctor().getId());
+		return  "redirect:";
 	}
 	
 }

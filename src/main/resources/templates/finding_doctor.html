@@ -20,23 +20,21 @@
 </head>
 <body>
 	
-<<<<<<< HEAD
+
 				<div class="col-lg-3 col-md-4 mb-4" th:each="doctor:${d}">
 				<div class="h-100">
 							<a ><img class="card-img-top " th:src="${doctor.image}" alt=""></a>
 							<h4 class="h5" th:text="${doctor.name}"></h4>
 								
-<<<<<<< HEAD
-							<button><a th:href="@{/appointment(id=${doctor.id})}">Book</a></button>
-=======
+
+							
+
 							<button><a  th:href="@{/DoctorAppointment(id=${doctor.id})}">Book</button>
->>>>>>> 3b196ce0b9c0a4f961b32409d8ef9fc60e57650e
+
 							<button><a th:href="@{/docPf(id=${doctor.id})}">Profile</a></button>
 				</div>
-							
-			</div>-->
-=======
->>>>>>> 84041aafea920955b84c2c8692ec6e6332b95805
+			</div>				
+
 	<div class="container">
 		<div class="col-12 bg-gray my-5 py-5 px-3 px-lg-5">
 			<div class="row">

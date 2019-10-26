@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table class="table mt-3">
+		<tr>
+		    <th>ID</th>
+			<th>Patient_Name</th>
+			<th>Doctor_Name</th>
+			<th>Phone_Number</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Age</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="app:${appointments}">
+		<td th:text="${app.id}"></td>
+		<td th:text="${app.patient_name}"></td>
+		<td th:text="${app.schedule.doctor.name}"></td>
+		<td th:text="${app.phone_no}"></td>
+		<td th:text="${app.schedule.date}"></td>
+		<td th:text="${app.schedule.fromTime}+'-'+${app.schedule.toTime}"></td>
+		<td th:text="${app.age}"></td>
+		<td ><a th:href="@{/admin/appointments/delete(id=${app.id})}">Delete</a></td>
+		</tr>
+		</table>
+</body>
+</html>
