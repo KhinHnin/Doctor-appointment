@@ -41,5 +41,11 @@ public class AppointmentDetailServiceImp implements AppointmentDetailService {
 		return appointmentDetailRepository.getOne(id);
 	}
 
+	@Override
+	public void deleteAppointment(Integer id) {
+		appointmentDetailRepository.deleteById(id);
+	}
+
+
 
 }

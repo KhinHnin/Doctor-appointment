@@ -1,5 +1,9 @@
 package com.example.doctor.appointment.controller;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,6 +31,7 @@ import com.example.doctor.appointment.service.DoctorService;
 import com.example.doctor.appointment.service.ScheduleService;
 
 @Controller
+
 public class BookAppointmentController {
 	
 	@Autowired
@@ -49,6 +55,8 @@ public class BookAppointmentController {
 		model.addAttribute("departments",departmentList);
 		Doctor Doc=doctorService.getDoctor(doct_id);
 		model.addAttribute("doc",Doc);
+		List<Schedule> scheduleList=scheduleService.getSchedules();
+		model.addAttribute("schedules", scheduleList);
 		
 		return "Book Appointment/appointment_detail";
 	}
@@ -76,10 +84,14 @@ public class BookAppointmentController {
 		model.addAttribute("appointment_Date",appointment_date);
 		System.out.println(appointmentDate);*/	
 		model.addAttribute("appointment",new AppointmentDetail());
-		////
+
 		return "Book Appointment/patient_Detail";
 	}
 	
+	
+
+	
+		
 	@PostMapping("/DoctorAppointment")
 	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,BindingResult binding,RedirectAttributes redirectAttributes) {
 		Schedule schedule=scheduleService.getSchedule(id);
@@ -91,7 +103,7 @@ public class BookAppointmentController {
 		if(binding.hasErrors()) {
 			redirectAttributes.addAttribute("doctorId", doct_id);
 			redirectAttributes.addAttribute("date", date);
-			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointment", binding);
+			//redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointment", binding);
 			return "redirect:/makeAppointment";
 		}
 		
@@ -100,6 +112,7 @@ public class BookAppointmentController {
 		builder.deleteCharAt(0);
 		appointment.setPhone_no("+95"+builder);
 	
+
 		appointmentDetailService.saveAppointment(appointment);
 		
 		redirectAttributes.addAttribute("appointmentId", appointment.getId());
@@ -111,6 +124,13 @@ public class BookAppointmentController {
 		AppointmentDetail Appointment=appointmentDetailService.getAppointmentById(id);
 		model.addAttribute("appointment",Appointment);
 		return "Book Appointment/confirmation";
+	}
+	
+	@GetMapping("/CancelAppointment")
+	public String cancelAppointment(@RequestParam("id")Integer appointment_id,@ModelAttribute("appointment")AppointmentDetail appointment,RedirectAttributes redirectAttributes) {
+		appointmentDetailService.deleteAppointment(appointment_id);
+		//redirectAttributes.addAttribute("id",appointment.getSchedule().getDoctor().getId());
+		return  "redirect:";
 	}
 	
 }

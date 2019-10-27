@@ -1,5 +1,9 @@
 package com.example.doctor.appointment.repository;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 import java.util.Date;
 import java.util.List;
 

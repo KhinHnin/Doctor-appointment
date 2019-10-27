@@ -2,11 +2,14 @@
 
 package com.example.doctor.appointment.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +22,13 @@ public class Department {
 	private int id;
 	@Column(name="name")
 	private String name;
+<<<<<<< HEAD
 	@Column(name = "image")
 	private String image;
+=======
+	@OneToMany(mappedBy = "department")	
+    private	List<Doctor> doctors;
+>>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 	
 	public Department(int id, String name, String image) {
 		super();

@@ -7,7 +7,7 @@
 <body>
 	<form th:action="@{/DoctorAppointment}" method="POST" th:object="${appointment}">
 		<div class="form-group">
-			<label>Schedules for <span th:text="${appointment_Date}"></span>:</label>
+			<label>Schedules for <span th:text="${appointment_date}"></span>:</label>
 			    <select  class="form-control" name="scheduleId">
 			    <option th:each="schedule:${schedules}" th:text="${schedule.fromTime}+'-'+${schedule.toTime}" th:value="${schedule.id}"></option>
 			    </select>

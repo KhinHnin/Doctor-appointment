@@ -59,6 +59,8 @@ public class Schedule {
 	
 	@Column(name = "date")
 	private Date date;
+	
+	
 
 	public Schedule() {
 

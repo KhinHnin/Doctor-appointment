@@ -27,7 +27,7 @@ public class DoctorController {
 	private DepartmentService departmentService;
 	
 	@GetMapping
-	public String showAdminPage(Model model) {
+	public String showDoctorList(Model model) {
 		List<Doctor> Doctors=doctorService.getDoctors();
 		model.addAttribute("doctors",Doctors);
 		//model.addAttribute("doctor",new Doctor());

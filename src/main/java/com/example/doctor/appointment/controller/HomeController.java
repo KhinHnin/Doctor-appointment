@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.doctor.appointment.entity.AppointmentDetail;
@@ -21,6 +22,7 @@ import com.example.doctor.appointment.service.DoctorService;
 import com.example.doctor.appointment.service.ScheduleService;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 	
 	@Autowired
@@ -36,11 +38,12 @@ public class HomeController {
 	@Autowired
 	private AppointmentDetailService appointmentDetailService;
 	
-	@GetMapping("/")
+	@GetMapping
 	public String showHome() {
 		return "home";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/docPf")
 	public String showSchedules(@RequestParam("id")Integer id,Model model) {
 		Doctor doctors=doctorService.getDoctor(id);
@@ -71,6 +74,9 @@ public class HomeController {
 
 
 	@GetMapping("/findDoctor")
+=======
+	@GetMapping("findDoctor")
+>>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 	public String showDoctors(HttpServletRequest request,Model model) {
 		List<Schedule> Schedules=scheduleService.getSchedules();
 		model.addAttribute("schedules",Schedules);
@@ -103,6 +109,7 @@ public class HomeController {
 		}
 		return "finding_doctor";
 	}
+<<<<<<< HEAD
 		
 //		if((dpStr==null)&(docStr==null)) {
 //			List<Doctor> doctors=doctorService.getDoctors();
@@ -116,5 +123,30 @@ public class HomeController {
 //			model.addAttribute("dr",doctor);
 //		}
 		
+=======
+	
+	@GetMapping("docPf")
+	public String showSchedules(@RequestParam("id")Integer id,Model model) {
+		Doctor doctors=doctorService.getDoctor(id);
+		model.addAttribute("doctor",doctors);
+		
+		//AppointmentCount Detail
+		List<Schedule> Schedulelist=new ArrayList<Schedule>();
+		List<Schedule> ScheduleList=scheduleService.getSchedules();
+		for(Schedule schedule:ScheduleList) {
+			List<AppointmentDetail> Appointments=appointmentDetailService.getAppointmentsBySchedule(schedule);
+			if(Appointments.size()<3) {
+				Schedulelist.add(schedule);
+			}
+		}
+		model.addAttribute("schedules",Schedulelist);
+		///
+		
+		return "doctor_profile";
+	}
+	
+
+	
+>>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 }
 	

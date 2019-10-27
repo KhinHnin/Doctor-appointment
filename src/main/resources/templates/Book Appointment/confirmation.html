@@ -9,7 +9,7 @@
 	<p>You have booked <span th:text="${appointment.schedule.doctor.name}"></span>
 	on <span th:text="${appointment.schedule.date}"></span>at
 	<span th:text="${appointment.schedule.fromTime}+'-'+${appointment.schedule.toTime}"></span><p>
-	<a>Cancel Appointment</a>
+	<a th:href="@{/CancelAppointment(id=${appointment.id})}">Cancel Appointment</a>
 	<a th:href="@{/DoctorAppointment/SmsConfirmation(id=${appointment.id})}">Confirm Appointment</a>
 </body>
 </html>
