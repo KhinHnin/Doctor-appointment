@@ -1,20 +1,15 @@
 package com.example.doctor.appointment.controller;
-<<<<<<< HEAD
-
 
 import java.util.List;
 
-=======
 import java.util.ArrayList;
->>>>>>> 84041aafea920955b84c2c8692ec6e6332b95805
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.doctor.appointment.entity.AppointmentDetail;
 import com.example.doctor.appointment.entity.Department;
@@ -37,13 +32,7 @@ public class HomeController {
 	@Autowired
 	private DepartmentService departmentService;
 	
-<<<<<<< HEAD
-	
-	@GetMapping("/docPf")
-	public String showSchedules(Model model) {
-		List<Schedule> Schedules=scheduleService.getSchedules();
-		List<Doctor> doctors=doctorService.getDoctors();
-=======
+
 	@Autowired
 	private AppointmentDetailService appointmentDetailService;
 	
@@ -55,7 +44,6 @@ public class HomeController {
 	@GetMapping("/docPf")
 	public String showSchedules(@RequestParam("id")Integer id,Model model) {
 		Doctor doctors=doctorService.getDoctor(id);
->>>>>>> 84041aafea920955b84c2c8692ec6e6332b95805
 		model.addAttribute("doctor",doctors);
 		
 		//AppointmentCount Detail
@@ -68,7 +56,7 @@ public class HomeController {
 			}
 		}
 		model.addAttribute("schedules",Schedulelist);
-		///
+		
 		
 		return "doctor_profile";
 	}
@@ -112,8 +100,6 @@ public class HomeController {
 		
 		model.addAttribute("dr",doctor);
 	
-		
-<<<<<<< HEAD
 		}
 		return "finding_doctor";
 	}
@@ -130,16 +116,5 @@ public class HomeController {
 //			model.addAttribute("dr",doctor);
 //		}
 		
-		
-		
-	
-	@GetMapping("/")
-	public String showHome() {
-		return "home";
-=======
-		return "finding_doctor";
-
->>>>>>> 84041aafea920955b84c2c8692ec6e6332b95805
-	}
 }
 	
