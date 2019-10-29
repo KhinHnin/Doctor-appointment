@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+     <title>Insert title here</title>
+     <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<link href="https://fonts.googleapis.com/css?family=Carme&display=swap"
+	rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap"
+	rel="stylesheet">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+       <style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+	width:100%;
+}
+
+body {
+	font-family: "Helvetica Neue", sans-serif;
+	font-weight: lighter;
+}
+
+h1 {
+	color: #ffa500;
+	text-align: center;
+}
+
+hr.style-four {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+.logo {
+	position: fixed;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-top: 2px;
+}
+
+nav {
+	position: fixed;
+	width: 100%;
+	line-height: 10px;
+}
+
+nav ul {
+	line-height: 60px;
+	list-style: none;
+	background: #ffa500;
+	overflow: hidden;
+	text-transform: uppercase;
+	color: #000;
+	padding: 0;
+	text-align: right;
+	margin: 0;
+	padding-right: 10px;
+	transition: 1s;
+}
+
+nav ul li {
+	display: inline-block;
+	padding: 16px 20px;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+}
+
+nav ul li a:hover {
+	text-decoration: none;
+	color: #004d99;
+	font-size: 16px;
+}
+
+.menu-icon {
+	line-height: 60px;
+	width: 100%;
+	background: #ffa500;
+	text-align: right;
+	box-sizing: border-box;
+	padding: 15px 24px;
+	cursor: pointer;
+	color: #fff;
+	display: none;
+}
+
+.app{
+	margin-top:150px;
+	z-index:20;
+	background: white;
+	padding: 30px;
+	box-shadow: 5px 5px 20px;
+}
+.example_e {
+border: none;
+background: #004d99;
+color: #ffffff !important;
+font-weight: 100;
+padding: 15px 20px;
+text-transform: uppercase;
+border-radius: 30px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+.example_e:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background:#ffa500;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+p{
+font-size:20px;
+}
+</style>
+
+</head>
+</head>
+<body>
+
+   	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
+   
+      <div class="container">
+      <div class="row ">
+     <div class="col-lg-7 mx-auto app text-danger">
+     <h1><i class="fas fa-sad-tear fa-2x text-gray-300"></i></h1>
+     <h4>
+       Sorry,appointment is already full in this day.
+       Please,choose another doctor or another day!</h4>
+      <a th:href=@{/findDoctor}>Choose Back</a>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="//code.jquery.com/jquery.js"></script>
+
+</body>
+</html>

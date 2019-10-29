@@ -13,10 +13,11 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link rel="stylesheet" th:href="@{/css/nav.css}">
+<link rel="stylesheet" th:href="@{/css/homenavbar.css}">
+ <script th:src="@{/js/nav.js}"></script>
 </head>
  <body >
- <div class="wrapper" th:fragment="app-navbar">
+ <div class="wrapper" th:fragment="app-homenavbar">
          <header>
             <nav>
              <div class="menu-icon">
@@ -36,6 +37,15 @@
             </nav>
             
          </header>
-    </div>     
+         <div>
+                     <img class="bg" th:src="@{images/hospital1.jpg}"/>
+               <div class="svg-wrapper my-auto ">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <rect class="shape"/>
+    <div class="text"><a class="app" th:href="@{/findDoctor}">Make Appointments</a></div>
+  </svg>
+</div>
+      </div>
+      </div>
    </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.doctor.appointment.entity.AppointmentDetail;
 import com.example.doctor.appointment.entity.Contact;
+import com.example.doctor.appointment.repository.AppointmentDetailRepository;
 import com.example.doctor.appointment.repository.DepartmentRepository;
 import com.example.doctor.appointment.repository.DoctorRepository;
 import com.example.doctor.appointment.service.AppointmentDetailService;
@@ -30,14 +31,19 @@ public class AdminController {
 	private ContactService contactService;
 	@Autowired
 	private AppointmentDetailService  appointmentDetailService;
+	
+	@Autowired
+	private AppointmentDetailRepository appointmentDetailRepository;
 
 	@GetMapping
 	public String showAdmin(Model model) {
 		long departCount=departmentRepository.count();
 		long doctorCount=doctorRepository.count();
+		long appointmentCount=appointmentDetailRepository.count();
 		
 		model.addAttribute("departCount",departCount);
 		model.addAttribute("doctorCount",doctorCount);
+		model.addAttribute("appointmentCount",appointmentCount);
 		return "admin/admin";
 	}
 	@GetMapping("/contactList")

@@ -29,9 +29,10 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<link rel="stylesheet" th:href="@{/css/nav.css}">
 <script th:src="@{/js/nav.js}"></script>
+
 <link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
 <style type="text/css">
 body {
@@ -56,16 +57,15 @@ hr.style-four {
 <body>
 
 	<!-- Navigation -->
-
 	<div th:replace="fragment/navbar :: app-navbar"></div>
-
 	<!-- Navigation-end -->
-	<div class="row justify-content-center mt-1 mx-auto">
-		<div class="col-lg-4 ml-5">
-			<h1>Our Departments</h1>
+	<div class="row ">
+		<div class="mx-auto " style="margin-top:110px;">
+			<h1>Departments</h1>
 		</div>
 	</div>
-	<p class="mx-5 p-3 text-muted">Hospitals vary widely in the
+	<div class="container">
+	<p class="mx-4 p-3 text-muted">Hospitals vary widely in the
 		services they offer and therefore, in the departments they have.
 		Hospitals may have acute services such as an emergency department or
 		specialist trauma center, burn unit, surgery, or urgent care. These
@@ -88,7 +88,7 @@ hr.style-four {
 	</div>
 	-->
 
-	<div class="row my-4 mx-5">
+	<div class="row my-4 mx-4">
 		<div class="cards-list mx-auto" th:each="department:${departments}">
 			<div class="card mx-3 my-4">
 				<div class="card_image">
@@ -101,6 +101,7 @@ hr.style-four {
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- department-card-end -->
 

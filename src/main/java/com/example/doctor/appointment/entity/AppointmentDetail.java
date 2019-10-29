@@ -26,11 +26,11 @@ public class AppointmentDetail {
 	
 	@Column(name="patient_name")
 	@NotNull
-	@Size(min=3,max=25)
+	@Size(min=3,max=25,message="Name size must be between 3 and 25")
 	private String patient_name;
 	
 	@Column(name="gender")
-	@NotNull
+	@NotNull(message="Gender must not be blank")
 	private String gender;
 	
 	@Column(name="age")
@@ -39,7 +39,7 @@ public class AppointmentDetail {
 	
 	@Column(name="phone_no")
 	//@Pattern(regexp = "(\\+95|0)[0-9]{9}")
-	@Size(min=11,message="Invalid Phone Number**")
+	@Size(min=11,message="Invalid Phone Number**(Phone number size is 11)")
 	private String phone_no;
 
 	public AppointmentDetail() {

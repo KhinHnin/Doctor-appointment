@@ -22,14 +22,5 @@ public class Controller {
 		this.service = service;
 	}
 	
-	@GetMapping("DoctorAppointment/SmsConfirmation")
-	public void sendSms(@RequestParam("id")Integer appointmentId,Model model) {
-		SmsRequest smsRequest = new SmsRequest();
-		AppointmentDetail appointment=appointmentDetailService.getAppointmentById(appointmentId);
-		smsRequest.setPhoneNumber(appointment.getPhone_no());
-		String message="Doctor-Name: "+appointment.getSchedule().getDoctor().getName()+"\nDate : "+appointment.getSchedule().getDate()+"\nTime : "+appointment.getSchedule().getFromTime()+"-"+appointment.getSchedule().getToTime();
-		smsRequest.setMessage(message);
-		service.sendSms(smsRequest);
-	}
 	
 }

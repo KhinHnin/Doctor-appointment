@@ -1,9 +1,5 @@
 package com.example.doctor.appointment.service;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +54,7 @@ public class ScheduleServiceImp implements ScheduleService{
 	}
 
 	@Override
-	public List<Schedule> getSchedulesByDr_Date(Integer doct_id, Date appointment_date) {
+	public List<Schedule> getSchedulesByDr_Date(Integer doct_id, String appointment_date) {
 		
 		return scheduleRepository.getSchedulesByDr_Date(doct_id,appointment_date);
 	}

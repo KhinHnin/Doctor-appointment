@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Online Doctor Appointment</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -11,78 +11,183 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
-
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<style type="text/css">
+body {
+	background-color: #ECF1EF;
+}
+
+h1 {
+	color: #ffa500;
+	font-weight: bold;
+	text-align: center;
+}
+
+hr.style-four {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+.app-container {
+	background: white;
+	padding: 30px;
+	box-shadow: 5px 5px 20px;
+}
+
+.doc-pic {
+	width: 230px;
+	height: 230px;
+}
+
+table h2 {
+	color: #ffa500;
+}
+
+h4 {
+	color: #004d99;
+}
+.mac {
+	display: block;
+	border: none;
+	border-radius: 20px;
+	padding: 10px 20px;
+	color: #004d99;
+	box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+	width:100%;
+}
+.myButton {
+	background-color: #004d99;
+	border-radius: 20px;
+	border: 0px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 17px;
+	padding: 7px 25px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #263666;
+}
+
+.myButton:hover {
+	background: linear-gradient(to bottom, #415989 5%, #2e466e 70%);
+	background-color: #004d99;
+}
+
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+</style>
+<link rel="stylesheet" th:href="@{/css/material-scrolltop.css}">
+
 </head>
 <body>
-	<div class="col-md-8 col-lg-9">
-		<div class="row">
-			<div class="col-md-6">
-				<h1 class="h3">Doctor Appointment</h1>
+	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
+    
+	<div class="container col-md-8 col-lg-9 mx-auto mb-5">
+		<div class="row " >
+		<div class="app-container" style="margin-top:150px;">
+		<div class="row " >
+			<div class="col-md-6 " >
+				<h1>Doctor Appointment</h1>
 				<form th:action="@{/makeAppointment}" method="GET">
 
-					<div class="form-group">
-						<label>Doctor Name:</label> 
-                         <select class="form-control" name="doctorId">
-                         
-                         <option th:each="doctor:${doctors}" th:value="${doctor.id}"
-                         th:selected="${doctor.id==doc.id}" th:text=${doctor.name}></option>
-                         </select>
+					<div class="form-group my-5">
+						<h4>Doctor Name:</h4>
+						 <select class="form-control mac" name="doctorId">
+							<option th:each="doctor:${doctors}" th:value="${doctor.id}"
+								th:selected="${doctor.id==doc.id}" th:text=${doctor.name}></option>
+						</select>
 					</div>
+
+
+					<div class="form-group my-5">
+						<h4>Department Name:</h4>
+						<input type="text" th:value="${doc.department.name}" class="form-control mac">
+					</div>
+
+					<div class="form-group my-5">
+						<h4>Preferred Date and Time Option*:</h4>
+						<input type="text" id="datepicker" name="date" class=" form-control mac">
+
+					</div>
+			
+				<input type="submit" value="Next Step"
+						class="form-control myButton"> 	
 					
-
-					<div class="form-group">
-						<label>Department Name:</label>
-						<input type="text" th:value="${doc.department.name}">
-					</div>
-
-					<div class="form-group">
-						<label>Preferred Date and Time Option*:</label>
-						 <input type="text" id="datepicker" name="date">
-							
-					</div>
-					<input type="submit" value="NextStep"
-						class="btn btn-primary btn-block">
 				</form>
 			</div>
 			<div class="col-md-6">
-			<img class="card-img-center center"  th:src="${doc.image}" alt="">
-			<table class="table">
-			
-					<tr><th><h1 th:text="${doc.name}"></h1></th></tr>
-			      	<tr>
-			      		<td><h2>Qualification</h2><p class="lead" th:text="${doc.qualification}"></p></td>
-			      	</tr>
-			     	<tr><td><h2>Speciality</h2><p th:text=" ${doc.department.name}"></p></td></tr>
-			      	<tr><td>
-			      	<div class="dropdown">
-			      	<button class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" style="size:70px">Schedule</button>
-			      <div class="dropdown-menu mt-3">
-			      <table class="table mt-2 dropdown-item mx-auto">
-			      <tr>
-			        <th>Day</th>
-			        <th>Time</th>
-			        <th>Date</th>
-                   </tr>
-			      <tr th:each="sh:${schedules}">
-			      <td th:if="${sh.doctor.id == doc.id}" th:text="${sh.day}"></td>
-			      <td th:if="${sh.doctor.id == doc.id}" th:text="${sh.fromTime}+'-'+${sh.toTime}"></td>
-			      <td th:if="${sh.doctor.id == doc.id}" th:text="${sh.date}"></td>
-			      </tr>
-			      </table>
-			      </div>
-			      </div>
-			     </table>
+				<div style="text-align: center;">
+					<img class="doc-pic card-img-center my-5 rounded-circle"
+						th:src="${doc.image}" alt="">
+				</div>
+				<table class="table">
+
+					<tr>
+						<th><h2 th:text="${doc.name}"></h2></th>
+					</tr>
+					<tr>
+						<td><h4>Qualification</h4>
+							<p class="lead text-muted" th:text="${doc.qualification}"></p></td>
+					</tr>
+					<tr>
+						<td><h4>Speciality</h4>
+							<p class="text-muted" th:text=" ${doc.department.name}"></p></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="dropdown">
+								<button class="myButton btn-lg dropdown-toggle"
+									data-toggle="dropdown" style="size: 70px">Schedule</button>
+								<div class="dropdown-menu mt-3">
+									<table class="table mt-2 dropdown-item mx-auto">
+										<tr>
+											
+											<th>Time</th>
+											<th>Date</th>
+										</tr>
+										<tr th:each="sh:${schedules}">
+											<td th:if="${sh.doctor.id == doc.id}"
+												th:text="${sh.fromTime}+'-'+${sh.toTime}"></td>
+											<td th:if="${sh.doctor.id == doc.id}" th:text="${sh.date}"></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+				</table>
 			</div>
-			
+			</div>
+			</div>
 		</div>
 	</div>
 
 
+	<hr class="style-four" />
 
-
-
+	<!-- scroll-top -->
+	<a href="#" id="scroll" style="display: none;"><span></span></a>
+	<!-- Footer -->
+	<div th:replace="fragment/footer :: app-footer"></div>
+	<!-- Footer -->
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -91,15 +196,18 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
-
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script th:src="@{js/material-scrolltop.js}"></script>
+
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 	<script>
 		$(function() {
 			$("#datepicker").datepicker({
@@ -107,17 +215,6 @@
 			});
 		});
 	</script>
-
-
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-    	minDate: 0
-    });
-  } );
-  </script>
 
 </body>
 </html>

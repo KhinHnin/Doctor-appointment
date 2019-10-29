@@ -16,7 +16,7 @@
 <body>
 	<div th:replace="fragment/sidebar::app-sidebar"></div>
 	<div class="container" style="width:100%;margin-left:200px;">
-		<h3 style="padding:20px;"  class="h3 text-gray-900 mb-4"><i class="fas fa-user-md mr-3" aria-hidden="true" style="width:25px;"></i>Edit Doctor Form</h3>
+		<h3 style="padding:10px;"  class="h3 text-gray-900 mb-4"><i class="fas fa-user-md mr-3" aria-hidden="true" style="width:25px;"></i>Edit Doctor Form</h3>
     <div class="col-md-8 col-lg-9">
 			     <div class="row">
 			     <div class="col-md-6 mx-auto">
@@ -39,23 +39,10 @@
 			         
 			      <div class="form-group">
 			         <label style="font-family: 'Be Vietnam', sans-serif;">Speciality:</label>
-<<<<<<< HEAD
-			         <select  class="form-control" name="departmentId">
-<<<<<<< HEAD
-			         <option th:each="department:${departments}" th:text="${department.name}" th:value="${department.id}" th:selected="${department.id==doctor.department.id}"></option>
-=======
-			         <option th:each="department:${departments}" th:text="${department.name}" th:value="${department.id}" 
-			                 th:selected="${department.id==doctor.department.id}"></option>
->>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
-=======
-			         <select style="border-radius: 20px;" class="form-control " name="departmentId">
+
+			         <select style="border-radius:20px;" class="form-control" name="departmentId">
 			         <option th:each="department:${departments}" th:text="${department.name}" th:value="${department.id}"
 			         	th:selected="${department.id==doctor.department.id}"></option>
-<<<<<<< HEAD
->>>>>>> 4a5fa801f04467541ad7d488bfa510d52fced78b
-=======
->>>>>>> 3b196ce0b9c0a4f961b32409d8ef9fc60e57650e
->>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 			         </select>
 			         </div>
 			          <input type="submit" value="Submit" class="btn btn-primary btn-block" style="border-radius: 20px;">

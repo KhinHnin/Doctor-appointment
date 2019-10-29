@@ -12,11 +12,14 @@
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/sidebar.css/}" type="text/css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 	<div th:replace="fragment/sidebar::app-sidebar"></div>
-	 <div class="container" style="width:100%;margin-left:200px;">
-	<h3 style="padding:20px;"  class="h3 text-gray-900 mb-4"><i class="fas fa-calendar-alt mr-3" style="width:25px;"></i>Add Schedule Form</h3>
+	
+	 <div class="container" style="width:80%;margin-left:200px;">
+	<h3 style="padding:10px;"  class="h3 text-gray-900 mb-4"><i class="fas fa-calendar-alt mr-3" style="width:25px;"></i>Add Schedule Form</h3>
 
 	<div class="col-md-8 col-lg-9">
 		<div class="row">
@@ -33,19 +36,6 @@
 		</div>
 		
 		<div class="form-group">
-			<label style="font-family: 'Be Vietnam', sans-serif;">Days:</label>
-			<select style="border-radius: 20px;" class="form-control" name="day_Id" th:field="*{day}">
-				<option  th:text="Monday" th:value="Monday"></option>
-				<option  th:text="Tuesday" th:value="Tuesday"></option>
-				<option  th:text="Wednesday" th:value="Wednesday"></option>
-				<option  th:text="Thursday" th:value="Thursday"></option>
-				<option  th:text="Friday" th:value="Friday"></option>
-				<option  th:text="Saturday" th:value="Saturday"></option>
-				<option  th:text="Sunday" th:value="Sunday"></option>
-			</select>
-		</div>
-		
-		<div class="form-group">
 			<label style="font-family: 'Be Vietnam', sans-serif;">From:</label>
 			<input style="border-radius: 20px;" type="time" class="form-control" th:field="*{fromTime}" placeholder="Time" />
 			<label style="font-family: 'Be Vietnam', sans-serif;">To:</label>
@@ -53,12 +43,18 @@
 		</div>
 		<div class="form-group">
 		<label style="font-family: 'Be Vietnam', sans-serif;">Date</label>
-		<input style="border-radius: 20px;" type="date" class="form-control"  th:field="*{date}" />
+		<input style="border-radius: 20px;" type="text" id="datepicker" class="form-control"  th:field="*{date}" />
 		
 		</div>
 		
 	    <input style="border-radius: 20px;" type="submit" value="Submit" class="btn btn-primary btn-block">
 	</form>
+		</div>
+		</div>
+	</div>
+	</div>
+	
+
 	
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -72,10 +68,17 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 	
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    	minDate: 0
+    });
+  } );
+  </script>
 	
-			</div>
-		</div>
-	</div>
+		
 	
 </body>
 </html>

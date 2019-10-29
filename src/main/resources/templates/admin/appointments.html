@@ -2,9 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Schedule form</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/sidebar.css/}" type="text/css">
 </head>
 <body>
+<div th:replace="fragment/sidebar::app-sidebar"></div>
+<div class="container" style="width:auto;margin-left:200px;">
+<h3   class="h3 text-gray-900 mb-4" style="padding:10px;">
+<i class="fas fa-calendar-alt mr-1" style="width:25px;"></i> Appointments</h3>
 <table class="table mt-3">
 		<tr>
 		    <th>ID</th>
@@ -24,8 +37,9 @@
 		<td th:text="${app.schedule.date}"></td>
 		<td th:text="${app.schedule.fromTime}+'-'+${app.schedule.toTime}"></td>
 		<td th:text="${app.age}"></td>
-		<td ><a th:href="@{/admin/appointments/delete(id=${app.id})}">Delete</a></td>
+		<td ><a class="btn btn-outline-danger btn-sm" th:href="@{/admin/appointments/delete(id=${app.id})}"><i class="far fa-trash-alt"></i></a></td>
 		</tr>
 		</table>
+	</div>
 </body>
 </html>

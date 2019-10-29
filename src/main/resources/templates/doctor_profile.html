@@ -3,74 +3,136 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Online Doctor Appointment</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/profile.css/}" type="text/css">
-	
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
 <style type="text/css">
-
-table{
-	height:100%;
-	font-family: 'Carme', sans-serif;
-	text-color:#004d99;
-  	text-align:left;
+body {
+	background-color: #ECF1EF;
 }
 
+h1 {
+	color: #ffa500;
+	font-weight: bold;
+}
+
+hr.style-four {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+table {
+	height: 100%;
+	font-family: 'Carme', sans-serif;
+	text-color: #004d99;
+	text-align: left;
+}
 </style>
+<link rel="stylesheet" th:href="@{/css/profile.css/}" type="text/css">
 </head>
 <body>
+	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
+	<div class="row"> 
+		<div class="mx-auto " >
+			<h1 style="margin-top:110px;">Doctor Profile</h1>
+		</div>
+	</div>
+	<div class="container" th:each="d:${doctor}">
+	
+		<div class="row  mx-auto mb-5 mt-3"  >
 
-<div class="container"  th:each="d:${doctor}">
-		<div class="row mt-5 mx-auto" >
+			<!-- Doctor-Profile-Card -->
 			<div class="col-12 col-lg-5"  >
-			<div class="doctor" style="background:#fff">	
-				<div class="doctorPF">
-					<img class="card-img-center center"  th:src="${d.image}" alt="">
+
+				<div class="card">
+					<img class="card-img-center center profile-img"  th:src="${d.image}" alt="">
+					<div class="mt-4 mx-auto">
+						<img th:src="@{images/ph.png}" class="icon rounded-circle mx-5">
+						<img th:src="@{images/calendar2.png}"
+							class="icon rounded-circle mx-5">
+					</div>
+					<div class="mb-4 mx-auto">
+						<a href="tel:+9509969890955" class="mx-4">Call for appointment</a>
+						<a th:href="@{/DoctorAppointment(id=${doctor.id})}" class="mx-4">
+							Book Appointment</a>
+					</div>
 				</div>
-		    	
-                <div class="doctor_action">
-                   <i class="fas fa-phone-volume ml-5 mr-5"></i>
-                   <i class="fas fa-calendar-alt ml-5 mr-4"></i><br> 
-                   <a href="tel:+9509969890955" class="ml-4 mr-4">Call for appointment</a>
-                   <a th:href="@{/DoctorAppointment(id=${doctor.id})}" class="ml-4 mr-4">Book Appointment</a>
-                </div>
-           
-            </div>
+
 			</div>
+
 			<div class="col-12 col-lg-7" >
 				<table class="table">
-					<tr><th><h1 th:text="${d.name}"></h1></th></tr>
-			      	<tr>
-			      		<td><h2>Qualification</h2><p class="lead" th:text="${d.qualification}"></p></td>
-			      	</tr>
-			     	<tr><td><h2>Speciality</h2><p th:text=" ${d.department.name}"></p></td></tr>
-			      	<tr><td>
-			      	<div class="dropdown">
-			      	<button class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" style="size:70px">Schedule</button>
-			      <div class="dropdown-menu mt-3">
-			      <table class="table mt-2 dropdown-item mx-auto">
-			      <tr>
-			        <th>Day</th>
-			        <th>Time</th>
-			        <th>Date</th>
-                   </tr>
-			      <tr th:each="sh:${schedules}">
-			      <td th:if="${sh.doctor.id == d.id}" th:text="${sh.day}"></td>
-			      <td th:if="${sh.doctor.id == d.id}" th:text="${sh.fromTime}+'-'+${sh.toTime}"></td>
-			      <td th:if="${sh.doctor.id == d.id}" th:text="${sh.date}"></td>
-			      </tr>
-			      </table>
-			      </div>
-			      </div>
-			     </table>
-			   </div>
-			      
+					<tr>
+						<th><h2 th:text="${d.name}" style="color:#ffa500;"></h2></th>
+					</tr>
+					
+					<tr>
+						<td><h2>Qualification</h2>
+							<p class="lead" th:text="${d.qualification}"></p></td>
+					</tr>
+					
+					<tr>
+						<td><h2>Speciality</h2>
+							<p th:text=" ${d.department.name}"></p></td>
+					</tr>
+					
+					<tr>
+						<td>
+							<h2>Schedule</h2>
+							<table class="table table-hover" style="background:#ECF1EF;">
+								<thead>
+									<tr style="background:#004d99;color:white;">
+										<th>Time</th>
+										<th>Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="sh:${schedules}" >
+										<td th:if="${sh.doctor.id == d.id}"
+											th:text="${sh.fromTime}+'-'+${sh.toTime}"></td>
+										<td th:if="${sh.doctor.id == d.id}" th:text="${sh.date}"></td>
+									</tr>
+								</tbody>
+							</table>
+					</td>
+					
+					</tr>
+					</table>
 			</div>
-</div>
-</div>
+
+		</div>
+	</div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	<hr class="style-four" />
+
+	<!-- scroll-top -->
+	<a href="#" id="scroll" style="display: none;"><span></span></a>
+	<!-- Footer -->
+	<div th:replace="fragment/footer :: app-footer"></div>
+	<!-- Footer -->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script
@@ -81,5 +143,9 @@ table{
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script th:src="@{js/material-scrolltop.js}"></script>
 </body>
 </html>

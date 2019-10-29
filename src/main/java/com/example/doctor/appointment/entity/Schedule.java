@@ -1,6 +1,5 @@
 package com.example.doctor.appointment.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,21 +35,17 @@ public class Schedule {
 		this.appointmentDetails = appointmentDetails;
 	}
 
-	public Schedule(int id, Doctor doctor, List<AppointmentDetail> appointmentDetails, String day, String fromTime,
-			String toTime, Date date) {
+	public Schedule(int id, Doctor doctor, List<AppointmentDetail> appointmentDetails, String fromTime,
+			String toTime, String date) {
 		super();
 		this.id = id;
 		this.doctor = doctor;
 		this.appointmentDetails = appointmentDetails;
-		this.day = day;
 		this.fromTime = fromTime;
 		this.toTime = toTime;
 		this.date = date;
 	}
-
-	@Column(name = "day")
-	private String day;
-
+	
 	@Column(name = "start_Time")
 	private String fromTime;
 
@@ -58,7 +53,7 @@ public class Schedule {
 	private String toTime;
 	
 	@Column(name = "date")
-	private Date date;
+	private String date;
 	
 	
 
@@ -66,20 +61,18 @@ public class Schedule {
 
 	}
 
-	public Schedule(int id, Doctor doctor, String day, String fromTime, String toTime, Date date) {
+	public Schedule(int id, Doctor doctor, String fromTime, String toTime, String date) {
 		super();
 		this.id = id;
 		this.doctor = doctor;
-		this.day = day;
 		this.fromTime = fromTime;
 		this.toTime = toTime;
 		this.date = date;
 	}
 
-	public Schedule(Doctor doctor, String day, String fromTime, String toTime, Date date) {
+	public Schedule(Doctor doctor, String fromTime, String toTime, String date) {
 		super();
 		this.doctor = doctor;
-		this.day = day;
 		this.fromTime = fromTime;
 		this.toTime = toTime;
 		this.date = date;
@@ -101,14 +94,6 @@ public class Schedule {
 		this.doctor = doctor;
 	}
 
-	public String getDay() {
-		return day;
-	}
-
-	public void setDay(String day) {
-		this.day = day;
-	}
-
 	public String getFromTime() {
 		return fromTime;
 	}
@@ -125,11 +110,11 @@ public class Schedule {
 		this.toTime = toTime;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

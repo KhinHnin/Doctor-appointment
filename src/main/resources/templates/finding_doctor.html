@@ -23,7 +23,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script th:src="@{/js/nav.js}"></script>
 <link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" th:href="@{/css/findDoc.css/}" type="text/css">
 
 <style type="text/css">
 body {
@@ -35,7 +34,18 @@ h1 {
 	font-weight: bold;
 	text-align: center;
 }
+hr.style-four {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+.card h4 {
+	color: #004d99;
+}
 </style>
+<link rel="stylesheet" th:href="@{/css/findDoc.css/}" type="text/css">
+
 <link rel="stylesheet" th:href="@{/css/material-scrolltop.css}">
 </head>
 <body>
@@ -43,27 +53,24 @@ h1 {
 	<div th:replace="fragment/navbar :: app-navbar"></div>
 	<!-- Navigation-end -->
 
-	<div class="row justify-content-center mt-1">
-		<div class="col-lg-3">
+	<div class="row justify-content-center">
+		<div class="col-lg-3" style="margin-top:110px;">
 			<div class="main_title">
 				<h1>Our Doctors</h1>
 			</div>
 		</div>
 	</div>
 
-	
 
-						
-
-	<div class="container">
-		<div class="col-12 bg-gray my-5 py-5 px-3 px-lg-5">
+	<div class="container doc-sr-box">
+		<div class="col-12 bg-gray my-4 py-5 px-3 px-lg-5">
 			<div class="row">
 			
-				<div class="col-12 col-md-6 col-lg flex-grow-1">
-					<label class="text-light">Search by specialty</label>
+				<div class="col-12 col-md-6 col-lg flex-grow-1 ml-4">
+					<label class="text-light mt-2">Search by specialty</label>
 					<div class="dropdown">
 						<div class="btn-group">
-							<button class="btn btn-light btn-lg dropdown-toggle"
+							<button class="btn btn-light btn-lg dropdown-toggle text-muted"
 								type="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">--- Please select Specility---</button>
 							<div class="dropdown-menu">
@@ -77,29 +84,29 @@ h1 {
 					</div>
 				</div>
 		
-				<div class="col-12 col-lg flex-grow-1">
-					<label class="text-light">Search by doctors name or surname</label>
+				<div class="col-12 col-lg flex-grow-1 ml-4">
+					<label class="text-light mt-2">Search by doctors name or surname</label>
 					<div class="dropdown">
 						<div class="btn-group">
-							<button class="btn btn-light btn-lg dropdown-toggle"
+							<button class="btn btn-light btn-lg dropdown-toggle text-muted"
 								type="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">--- Please select Doctor name ---
 							</button>
 							<div class="dropdown-menu">
 								<div class="list-group">
 									<a th:href="@{/findDoctor(doc=${doctor.id})}"
-										class="list-group-item list-group-item-action list-group-item-dark"
+										class="list-group-item list-group-item-action list-group-item-dark "
 										th:each="doctor:${dList}" th:text="${doctor.name}"></a>
-								</div>
-							</div>
-
-							<div class="col-12 col-lg flex-grow-1">
-								<div class="ml-5 col-lg-2">
-									<a th:href="@{/findDoctor}" class="btn btn-light ">Find All Doctor</a>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+				
+				<div class="col-12 col-lg flex-grow-1 mt-3 ml-4">
+								<div class="col-lg-2 mt-4">
+									<a th:href="@{/findDoctor}" class="btn btn-light" style="font-size:18px;">Find All Doctor</a>
+								</div>
 				</div>
 				
 			</div>
@@ -107,35 +114,33 @@ h1 {
 	</div>
 
 	<!--  Doctor images -->
-	<div class=maincontent>
-		<div class="col-12 bg-gray my-3  py-5 px-3 px-lg-5">
-			<div class="row">
-				<div class="col-12 col-lg-4" th:each="doctor:${dr}">
-					<div class="doctor rounded">
-					<img th:src="${doctor.image}" width="100" height="100" class=" rounded-circle z-depth-2"  data-holder-rendered="true">
-					<div class="doctor">
-						<img th:src="${doctor.image}" class="center">
-						<h3 th:text="${doctor.name}"></h3>
-						<p class="speciality" th:text="${doctor.qualification}"></p>
-
-						<div class="col-md-10 mx-auto">
-							<a th:href="@{/docPf(id=${doctor.id})}" target="_blank"
-								class="btn btn-primary btn-block my-3"><i
-								class="far fa-user-circle mr-2"></i>VIEW PROFILE</a>
+	<div class="container ">
+	<div class="row mx-auto mb-5">
+					<div class="col-lg-4 mt-4" th:each="doctor:${dr}">
+					<div class="card rounded p-3">
+						
+						<img th:src="${doctor.image}" class="mx-auto my-3">
+					
+						<h4 th:text="${doctor.name}"></h4>
+						<p class="text-muted" th:text="${doctor.department.name}"></p>
+						<div class="button_cont mx-auto mb-3">
+							<a th:href="@{/docPf(id=${doctor.id})}" 
+								class="button"><i
+								class="far fa-user-circle mr-2"></i>VIEW PROFILE</a>		
 						</div>
-						<div class="col-md-10 mx-auto">
-							<a target="_blank" class="btn btn-primary btn-block my-3"
-							th:href="@{/DoctorAppointment(id=${doctor.id})}" class="btn btn-primary btn-block my-3">
-							<i	class="far fa-calendar-check mr-2"></i>BOOK APPOINTMENT</a>
+						<div class="button_cont mx-auto mb-4">
+							<a th:href="@{/DoctorAppointment(id=${doctor.id})}" 
+								class="button"><i
+								class="far fa-calendar-check mr-2"></i>BOOK APPOINTMENT</a>		
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+		
 	</div>
 	</div>
 	<!-- Find Doctors Card End -->
 	
+	<hr class="style-four" />
 	
 	<!-- scroll-top -->
 	<a href="#" id="scroll" style="display: none;"><span></span></a>

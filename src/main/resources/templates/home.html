@@ -129,14 +129,14 @@ hr.style-four{
 </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<link rel="stylesheet" th:href="@{/css/nav.css}">
+<link rel="stylesheet" th:href="@{/css/homenavbar.css}">
  <script th:src="@{/js/nav.js}"></script>
  <link rel="stylesheet" th:href="@{/css/material-scrolltop.css}">
 </head>
 
 <body>
 	<!-- Navigation -->
-	<div th:replace="fragment/navbar :: app-navbar"> <p class="content">Hello World!</p></div>
+	<div th:replace="fragment/homenavbar :: app-homenavbar"> </div>
 
 	<!-- service -->
 	<div class="container mt-1 text-center">
@@ -326,7 +326,7 @@ hr.style-four{
 				<p class="text-muted">Our hospitals provides comprehensive care
 					and treatment planning by focusing on multidisciplinary care,
 					ensuring the highest benefit to our parent.</p>
-				<a th:href="@{/departments}" class="myButton mt-4">Find More Doctors</a>
+				<a th:href="@{/findDoctor}" class="myButton mt-4">Find More Doctors</a>
 			</div>
 			<div class="col-md-6 how-img">
 				<img th:src="@{images/doc.png}" class="rounded-circle img-fluid mt-4"alt="" />

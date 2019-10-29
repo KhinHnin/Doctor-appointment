@@ -1,9 +1,5 @@
 package com.example.doctor.appointment.repository;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +17,6 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Integer>{
 	
 
 	@Query("SELECT schedule FROM Schedule schedule WHERE schedule.doctor.id = ?1 and schedule.date = ?2")
-	List<Schedule> getSchedulesByDr_Date(Integer doct_id, Date appointment_date);
+	List<Schedule> getSchedulesByDr_Date(Integer doct_id, String appointment_date);
 
 }

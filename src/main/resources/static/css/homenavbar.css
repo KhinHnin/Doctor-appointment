@@ -1,0 +1,256 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Vollkorn+SC&display=swap')
+	;
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+body {
+	font-family: "Helvetica Neue", sans-serif;
+	font-weight: lighter;
+}
+
+.logo {
+	position: fixed;
+	width:135px;
+	float: left;
+	margin-left: 20px;
+	margin-right: 10px;
+	padding-top: 2px;
+}
+
+nav {
+	position: fixed;
+	width: 100%;
+	line-height: 10px;
+}
+
+nav ul {
+	line-height: 60px;
+	list-style: none;
+	background: transparent;
+	overflow: hidden;
+	text-transform: uppercase;
+	color: #000;
+	padding: 0;
+	text-align: right;
+	margin: 0;
+	padding-right: 10px;
+	transition: 1s;
+}
+
+nav.black ul {
+	background: #ffa500;
+}
+
+nav.black ul li a:hover {
+	text-decoration: none;
+	color: #004d99;
+	font-size: 16px;
+}
+
+.showing {
+	max-height: 34em;
+}
+
+nav ul li {
+	display: inline-block;
+	padding: 16px 20px;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+}
+
+nav ul li a:hover {
+	text-decoration: none;
+	color: #ffa500;
+	font-size: 16px;
+}
+
+.menu-icon {
+	line-height: 60px;
+	width: 100%;
+	background: #ffa500;
+	text-align: right;
+	box-sizing: border-box;
+	padding: 15px 24px;
+	cursor: pointer;
+	color: #fff;
+	display: none;
+}
+
+header {
+	width: 100%;
+	background-size: cover;
+	position: absolute;
+	z-index: 20;
+}
+
+img {
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
+img.bg {
+	/* Add the blur effect */
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+}
+
+/* ------Border Animation------ */
+svg {
+	width: 800px;
+	height: 100px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.svg-wrapper {
+	position: relative;
+	top: -150px;
+	transform: translateY(-50%);
+	margin: 0 auto;
+	width: 800px;
+	height: 100px;
+}
+
+.shape {
+	stroke-dasharray: 0 700 300 1000;
+	stroke-dashoffset: -474;
+	stroke-width: 5px;
+	fill: transparent;
+	stroke: #CEF5F3;
+	border-radius: 10px 10px 10px 10px;
+	width: 800px;
+	height: 100px;
+	border-bottom: 5px solid black;
+	transition: 0.5s ease;
+	transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+
+.text {
+	font-size: 50px;
+	font-family: 'Vollkorn SC', serif;
+	line-height: 5px;
+	color: #FFFFFF;
+	text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5,
+		-2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0
+		#4074b5, 0px -2px 0 #4074b5;
+	top: -60px;
+	left: 125px;
+	position: relative;
+}
+
+.app {
+	text-decoration: none;
+	color: #fff;
+}
+
+.app:hover {
+	text-decoration: none;
+	color: #fff;
+	text-shadow: 4px 3px 0 #7A7A7A;
+}
+
+.svg-wrapper:hover .shape {
+	stroke-width: 15px;
+	stroke-dashoffset: 0;
+	stroke-dasharray: 2000;
+	fill: rgba(54, 148, 211, 0.26);
+	transition: 0.5s ease;
+	border-radius: 10px 10px 10px 10px;
+}
+
+@media ( max-width : 660px) {
+	.logo {
+		position: fixed;
+		top: 0;
+		margin: 0px;
+	}
+	nav ul {
+		max-height: 0px;
+		background: #004d99;
+	}
+	nav.black ul {
+		background: #004d99;
+	}
+	nav.black ul li a:hover {
+		text-decoration: none;
+		color: #ffa500;
+		font-size: 16px;
+	}
+	.showing {
+		max-height: 34em;
+	}
+	nav ul li {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 5px;
+		text-align: center;
+	}
+	.menu-icon {
+		display: block;
+	}
+	svg {
+		width: 300px;
+		height: 100px;
+		border-radius: 5px;
+
+	}
+	.svg-wrapper {
+		position: relative;
+		top: 50px;
+		transform: translateY(-50%);
+		margin: 0 auto;
+		width: 300px;
+		height: 100px;
+	}
+	.text {
+		font-size: 30px;
+		font-family: 'Vollkorn SC', serif;
+		line-height: 30px;
+		color: #FFFFFF;
+		text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5,
+			-2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0
+			#4074b5, 0px -2px 0 #4074b5;
+		top: -90px;
+		left: 5px;
+		position: relative;
+		text-align: center;
+		letter-spacing:2px;
+	}
+	.shape {
+		stroke-dasharray: 0;
+		stroke-dashoffset: -100;
+		stroke-width: 5px;
+		fill: transparent;
+		stroke: #004d99;
+		border-radius: 10px 10px 10px 10px;
+		width: 300px;
+		height: 100px;
+		border-bottom: 5px solid black;
+		transition: stroke-width 0.1s, stroke-dashoffset 0.1s, stroke-dasharray
+			0.1s;
+	}
+	.svg-wrapper:hover .shape {
+		stroke-width: 5px;
+		stroke-dashoffset: 1000;
+		stroke-dasharray: 1000;
+		fill:transparent;
+		border-radius: 10px 10px 10px 10px;
+	}
+	img.bg {
+		width: 100%;
+		background-position: center;
+		top: 500px;
+		background-repeat: no-repeat;
+		z-index: 10;
+	}
+}

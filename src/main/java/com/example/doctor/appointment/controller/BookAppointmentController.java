@@ -1,9 +1,5 @@
 package com.example.doctor.appointment.controller;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 36640e1dece7d0ad98c02e71e2e48483e4404823
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +25,8 @@ import com.example.doctor.appointment.service.AppointmentDetailService;
 import com.example.doctor.appointment.service.DepartmentService;
 import com.example.doctor.appointment.service.DoctorService;
 import com.example.doctor.appointment.service.ScheduleService;
+import com.example.doctor.appointment.smsSending.Service;
+import com.example.doctor.appointment.smsSending.SmsRequest;
 
 @Controller
 
@@ -46,6 +44,9 @@ public class BookAppointmentController {
 	@Autowired
 	private AppointmentDetailService appointmentDetailService;
 	
+	@Autowired
+	private Service service;
+	
 	@GetMapping("/DoctorAppointment")
 	public String showAppointmentDetail(@RequestParam("id")Integer doct_id, Model model) {
 		
@@ -56,13 +57,20 @@ public class BookAppointmentController {
 		Doctor Doc=doctorService.getDoctor(doct_id);
 		model.addAttribute("doc",Doc);
 		List<Schedule> scheduleList=scheduleService.getSchedules();
-		model.addAttribute("schedules", scheduleList);
+		List<Schedule> schedulelist=new ArrayList<Schedule>();
+		for(Schedule schedule:scheduleList) {
+			List<AppointmentDetail> appointments=schedule.getAppointmentDetails();
+			if(appointments.size()<3) {
+				schedulelist.add(schedule);
+			}
+		}
+		model.addAttribute("schedules", schedulelist);
 		
 		return "Book Appointment/appointment_detail";
 	}
 	
 	@GetMapping("/makeAppointment")
-	public String showPatienDetail(@RequestParam("doctorId")Integer doct_id,@RequestParam("date")Date appointment_date,Model model) {
+	public String showPatienDetail(@RequestParam("doctorId")Integer doct_id,@RequestParam("date")String appointment_date,Model model) {
 		
 		List<Schedule> schedulelist=scheduleService.getSchedulesByDr_Date(doct_id,appointment_date);
 		List<Schedule> scheduleList=new ArrayList<Schedule>();
@@ -75,22 +83,19 @@ public class BookAppointmentController {
 			}
 			
 		}
-		model.addAttribute("schedules",scheduleList);
 		
-		//To filter schedules
-		/*SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
-		String appointmentDate=simpleDateformat.format(appointment_date);
-		model.addAttribute("appoint_Date",appointmentDate);
-		model.addAttribute("appointment_Date",appointment_date);
-		System.out.println(appointmentDate);*/	
-		model.addAttribute("appointment",new AppointmentDetail());
+		if(scheduleList.size()!=0) {
+			model.addAttribute("schedules",scheduleList);
+			
+			
+			model.addAttribute("appointment",new AppointmentDetail());
 
-		return "Book Appointment/patient_Detail";
+			return "Book Appointment/patient_Detail";
+		}else {
+			return "empty_schedule";
+		}
+		
 	}
-	
-	
-
-	
 		
 	@PostMapping("/DoctorAppointment")
 	public String saveAppointment(@RequestParam("scheduleId")Integer id,@ModelAttribute("appointment") @Valid AppointmentDetail appointment,BindingResult binding,RedirectAttributes redirectAttributes) {
@@ -98,12 +103,12 @@ public class BookAppointmentController {
 		appointment.setSchedule(schedule);
 		Doctor doctor=schedule.getDoctor();
 		int doct_id=doctor.getId();
-		Date date=schedule.getDate();
+		String date=schedule.getDate();
 		
 		if(binding.hasErrors()) {
 			redirectAttributes.addAttribute("doctorId", doct_id);
 			redirectAttributes.addAttribute("date", date);
-			//redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.appointment", binding);
+			redirectAttributes.addFlashAttribute("errors", binding.getAllErrors());
 			return "redirect:/makeAppointment";
 		}
 		
@@ -131,6 +136,28 @@ public class BookAppointmentController {
 		appointmentDetailService.deleteAppointment(appointment_id);
 		//redirectAttributes.addAttribute("id",appointment.getSchedule().getDoctor().getId());
 		return  "redirect:";
+	}
+	
+	@GetMapping("/SmsConfirmation")
+	public String sendSms(@RequestParam("id")Integer appointmentId,Model model) {
+		SmsRequest smsRequest = new SmsRequest();
+		AppointmentDetail appointment=appointmentDetailService.getAppointmentById(appointmentId);
+		Schedule schedule=appointment.getSchedule();
+		int tokenNo = 0;
+		List<AppointmentDetail> appointmentList=appointmentDetailService.getAppointmentsBySchedule(schedule);
+		for(AppointmentDetail appoint:appointmentList) {
+			if(appoint.getId()==appointment.getId())
+			{
+				tokenNo=appointmentList.indexOf(appoint);
+				tokenNo+=1;
+			}
+		}
+		smsRequest.setPhoneNumber(appointment.getPhone_no());
+		String message="\nToken No:"+tokenNo+"\nAppointment ID:"+appointment.getId()+"\nDoctor-Name: "+appointment.getSchedule().getDoctor().getName()+"\nDate : "+appointment.getSchedule().getDate()+"\nTime : "+appointment.getSchedule().getFromTime()+"-"+appointment.getSchedule().getToTime();
+		smsRequest.setMessage(message);
+		service.sendSms(smsRequest);
+		
+		return "redirect:";
 	}
 	
 }

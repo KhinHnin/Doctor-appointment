@@ -2,41 +2,189 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Online Doctor Appointment</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+body {
+	background-color: #ECF1EF;
+}
+
+h1 {
+	color: #ffa500;
+	text-align: center;
+}
+
+hr.style-four {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+.app-container {
+	background: white;
+	padding: 30px;
+	box-shadow: 5px 5px 20px;
+}
+
+h4 {
+	color: #004d99;
+}
+
+.mac {
+	display: block;
+	border: none;
+	border-radius: 20px;
+	padding: 10px 20px;
+	color: #004d99;
+	box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+	width: 100%;
+}
+
+.gen {
+	font-size: 17px;
+}
+
+.myButton {
+	background-color: #004d99;
+	border-radius: 20px;
+	border: 0px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 17px;
+	padding: 7px 25px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #263666;
+}
+
+.myButton:hover {
+	background: linear-gradient(to bottom, #415989 5%, #2e466e 70%);
+	background-color: #004d99;
+}
+
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+.error{
+border:1px solid red;
+text-align:center;
+list-style:none;
+}
+</style>
+<link rel="stylesheet" th:href="@{/css/material-scrolltop.css}">
 </head>
 <body>
-	<form th:action="@{/DoctorAppointment}" method="POST" th:object="${appointment}">
-		<div class="form-group">
-			<label>Schedules for <span th:text="${appointment_date}"></span>:</label>
-			    <select  class="form-control" name="scheduleId">
-			    <option th:each="schedule:${schedules}" th:text="${schedule.fromTime}+'-'+${schedule.toTime}" th:value="${schedule.id}"></option>
-			    </select>
-		</div>
-		
-		<div class="form-group">
-			<label>Name:</label> <input type="text" class="form-control" th:field="*{patient_name}"> 
-			<span th:errors="*{patient_name}" class="error"></span>
-		</div>
+	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
 
-		<div class="form-group">
-			<label>Gender:</label> <input type="radio" name="gender"
-				th:text="Male" th:value="Male" th:field="*{gender}"> <input
-				type="radio" name="gender" th:text="Female" th:value="Female"
-				th:field="*{gender}">
-				<span th:errors="*{gender}" class="error"></span>
-		</div>
+	<div class="col-md-8 col-lg-9 mx-auto p-5">
+		<div class="app-container" style="margin-top: 110px;">
+			<ul th:if="${errors!=null}" class="text-danger error">
+				<li th:each="error:${errors}" th:text="${error.defaultMessage}"></li>
+			</ul>
+			<h1>Patient's Detail Information</h1>
+			<div class="col-lg-7 mx-auto">
+				<form th:action="@{/DoctorAppointment}" method="POST"
+					th:object="${appointment}">
+					<div class="form-group my-5">
+						<h4>
+							Schedules for <span th:text="${appointment_date}"></span>:
+						</h4>
+						<select class="form-control mac" name="scheduleId">
+							<option th:each="schedule:${schedules}"
+								th:text="${schedule.fromTime}+'-'+${schedule.toTime}"
+								th:value="${schedule.id}"></option>
+						</select>
+					</div>
 
-		<div class="form-group">
-			<label>Age:</label> <input type="text" th:field="*{age}" class="form-control"> 
-			<span th:errors="*{age}" class="error"></span>
-		</div>
+					<div class="form-group my-5">
+						<h4>Patient's Name:</h4>
+						<input type="text" class="form-control mac"
+							th:field="*{patient_name}"> <span
+							th:errors="*{patient_name}" class="error"></span>
+					</div>
 
-		<div class="form-group">
-			<label>Phone Number:</label> <input type="tel" class="form-control"
-				th:field="*{phone_no}"> <span th:errors="*{phone_no}"
-				class="error"></span>
+					<div class="form-group my-5">
+						<h4>Gender:</h4>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" class="custom-control-input" name="gender"
+								id="male"> <label class="custom-control-label gen"
+								for="male" th:text="Male" th:field="*{gender}"></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" class="custom-control-input" name="gender"
+								id="female"> <label class="custom-control-label gen"
+								for="female" th:text="Female" th:field="*{gender}"></label>
+						</div>
+						<span th:errors="*{gender}" class="error"></span>
+
+					</div>
+
+					<div class="form-group my-5">
+						<h4>Age:</h4>
+						<input type="text" th:field="*{age}" class="form-control mac">
+						<span th:errors="*{age}" class="error"></span>
+					</div>
+
+					<div class="form-group my-5">
+						<h4>Phone Number:</h4>
+						<input type="tel" class="form-control mac" th:field="*{phone_no}">
+						<span th:errors="*{phone_no}" class="error"></span>
+					</div>
+					<input type="submit" value="Submit" 
+						class="form-control myButton">
+				</form>
+			</div>
 		</div>
-		<input type="submit" value="Submit" class="btn btn-primary btn-block">
-	</form>
+	</div>
+	<hr class="style-four" />
+
+	<!-- scroll-top -->
+	<a href="#" id="scroll" style="display: none;"><span></span></a>
+	<!-- Footer -->
+	<div th:replace="fragment/footer :: app-footer"></div>
+	<!-- Footer -->
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script th:src="@{js/material-scrolltop.js}"></script>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </body>
 </html>
