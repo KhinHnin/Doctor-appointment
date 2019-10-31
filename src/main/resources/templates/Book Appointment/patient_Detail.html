@@ -136,7 +136,7 @@ list-style:none;
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
 							<input type="radio" class="custom-control-input" name="gender"
-								id="female"> <label class="custom-control-label gen"
+								id="female" checked> <label class="custom-control-label gen"
 								for="female" th:text="Female" th:field="*{gender}"></label>
 						</div>
 						<span th:errors="*{gender}" class="error"></span>
@@ -151,7 +151,7 @@ list-style:none;
 
 					<div class="form-group my-5">
 						<h4>Phone Number:</h4>
-						<input type="tel" class="form-control mac" th:field="*{phone_no}">
+						<input type="tel" class="form-control mac" th:field="*{phone_no}" placeholder="09XXXXXXXXX">
 						<span th:errors="*{phone_no}" class="error"></span>
 					</div>
 					<input type="submit" value="Submit" 

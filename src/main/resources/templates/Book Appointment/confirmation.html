@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Online Doctor Appointment</title>
-      
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Online Doctor Appointment</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script th:src="@{/js/nav.js}"></script>
+<link th:href="@{/css/nav.css}" rel="stylesheet" type="text/css">
 <style type="text/css">
 html, body {
 	margin: 0;
@@ -35,66 +47,9 @@ hr.style-four {
 		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
 }
 
-.logo {
-	position: fixed;
-	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
-	padding-top: 2px;
-}
-
-nav {
-	position: fixed;
-	width: 100%;
-	line-height: 10px;
-}
-
-nav ul {
-	line-height: 60px;
-	list-style: none;
-	background: #ffa500;
-	overflow: hidden;
-	text-transform: uppercase;
-	color: #000;
-	padding: 0;
-	text-align: right;
-	margin: 0;
-	padding-right: 10px;
-	transition: 1s;
-}
-
-nav ul li {
-	display: inline-block;
-	padding: 16px 20px;
-}
-
-nav ul li a {
-	text-decoration: none;
-	color: #fff;
-	font-size: 16px;
-}
-
-nav ul li a:hover {
-	text-decoration: none;
-	color: #004d99;
-	font-size: 16px;
-}
-
-.menu-icon {
-	line-height: 60px;
-	width: 100%;
-	background: #ffa500;
-	text-align: right;
-	box-sizing: border-box;
-	padding: 15px 24px;
-	cursor: pointer;
-	color: #fff;
-	display: none;
-}
 
 .app{
 	margin-top:150px;
-	z-index:20;
 	background: white;
 	padding: 30px;
 	box-shadow: 5px 5px 20px;
@@ -125,26 +80,10 @@ font-size:20px;
 </style>
 </head>
 <body>
-<div>
-            <nav>
-             <div class="menu-icon">
-                  <i class="fa fa-bars fa-2x"></i>
-               </div>
-            <div class="logo">
-               <a th:href="@{/}"> <img th:src="@{/images/gm-logo.png}"  width="140px" height="90px"/>
-		</a></div>
-               <div class="menu">
-                  <ul>
-                     <li><a th:href="@{/}">Home</a></li>
-                     <li><a th:href="@{/findDoctor}">Appointments</a></li>
-                     <li><a th:href="@{/departments}">Departments</a></li>
-                     <li><a th:href="@{/contactus}">Contact</a></li>
-                  </ul>
-               </div>
-            </nav>
-            
-       </div>
-    
+	<!-- Navigation -->
+	<div th:replace="fragment/navbar :: app-navbar"></div>
+	<!-- Navigation-end -->
+	
  <div class="container" >
 	<div class="row ">
      <div class="col-lg-7 mx-auto app">
@@ -154,10 +93,10 @@ font-size:20px;
 	<span th:text="${appointment.schedule.fromTime}+'-'+${appointment.schedule.toTime}"></span><p>
 	
 	<div class="button_cont" align="center">
-	<a class="example_e mx-3" th:href="@{/CancelAppointment(id=${appointment.id})}" >
+	<a class="example_e mx-3 my-2" th:href="@{/CancelAppointment(id=${appointment.id})}" >
 	Cancel Appointment</a>
 	
-	<a class="example_e mx-3" th:href="@{/SmsConfirmation(id=${appointment.id})}" >
+	<a class="example_e mx-3 my-2" th:href="@{/SmsConfirmation(id=${appointment.id})}" >
 	Confirm Appointment</a>
 	</div>
 	
@@ -165,5 +104,24 @@ font-size:20px;
 	</div>
    </div>  
    </div>   
+   	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script th:src="@{js/material-scrolltop.js}"></script>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </body>
 </html>

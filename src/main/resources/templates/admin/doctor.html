@@ -30,7 +30,7 @@
 			<td th:text="${doctor.id}"></td>
 			<td th:text="${doctor.name}"></td>
 			<td th:text="${doctor.department.name}"></td>
-			<td  style="width:30%" th:text="${doctor.qualification}"></td>
+			<td  style="width:40%" th:text="${doctor.qualification}"></td>
 			<td><a class="btn btn-outline-warning btn-sm" th:href="@{/admin/doctors/edit(id=${doctor.id})}"><i class="far fa-edit"></i> </a> 
 			<a class="btn btn-outline-danger btn-sm" th:href="@{/admin/doctors/delete(id=${doctor.id})}"><i class="far fa-trash-alt"></i> </a></td>
 		</tr>

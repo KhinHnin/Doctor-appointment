@@ -135,7 +135,7 @@ public class BookAppointmentController {
 	public String cancelAppointment(@RequestParam("id")Integer appointment_id,@ModelAttribute("appointment")AppointmentDetail appointment,RedirectAttributes redirectAttributes) {
 		appointmentDetailService.deleteAppointment(appointment_id);
 		//redirectAttributes.addAttribute("id",appointment.getSchedule().getDoctor().getId());
-		return  "redirect:";
+		return  "redirect:/";
 	}
 	
 	@GetMapping("/SmsConfirmation")
@@ -157,7 +157,7 @@ public class BookAppointmentController {
 		smsRequest.setMessage(message);
 		service.sendSms(smsRequest);
 		
-		return "redirect:";
+		return "redirect:/";
 	}
 	
 }
